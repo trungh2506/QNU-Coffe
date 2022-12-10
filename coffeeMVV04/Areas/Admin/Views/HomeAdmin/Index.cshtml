@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Dasbord page";
+}
+
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers">56 ly</div>
+            <div class="cardName">đã bán hôm nay</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-mug-saucer"></i>
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <div class="numbers">1,665,000 đ</div>
+            <div class="cardName">Số tiền Hôm nay</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-money-bill-1-wave"></i>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">1,665,000 đ</div>
+            <div class="cardName">Số tiền tất cả</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-money-bill-1-wave"></i>
+        </div>
+    </div>
+</div>
+
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Đơn hàng</h2>
+            <a href="#" class="btn">Xem Tất cả</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Thời gian</td>
+                    <td>Tên</td>
+                    <td>Giá</td>
+                    <td>Bàn số</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@DateTime.Now.ToString()</td>
+                    <td>Cafe sửa size M</td>
+                    <td>18,000 đ</td>
+                    <td>7</td>
+                    <td><span class="status online">đang ngồi</span></td>
+                </tr>
+                <tr>
+                    <td>@DateTime.Now.ToString()</td>
+                    <td>Cafe sửa size M</td>
+                    <td>18,000 đ</td>
+                    <td>7</td>
+                    <td><span class="status pay">đã trả tiền</span></td>
+                </tr>
+                <tr>
+                    <td>@DateTime.Now.ToString()</td>
+                    <td>Cafe sửa size M</td>
+                    <td>18,000 đ</td>
+                    <td>7</td>
+                    <td><span class="status owe">nợ</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

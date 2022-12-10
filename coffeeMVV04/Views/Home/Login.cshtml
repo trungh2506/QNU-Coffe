@@ -1,0 +1,32 @@
+﻿
+@model coffeeMVV04.Models.NguoiDung
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="form-area">
+    <div class="center">
+        <h1>Đăng nhập</h1>
+        <form method="post" action="">
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+            <div class="txt-field">
+                @Html.TextBoxFor(m => m.SDT, "")
+                <span></span>
+                <label for="">Số điện thoại</label>
+            </div>
+            <div class="txt-field">
+                @Html.TextBoxFor(m => m.Password, "")
+                <span></span>
+                <label for="">Password</label>
+            </div>
+                <div class="pass">Quên mật khẩu?</div>
+                <input type="submit" value="Đăng nhập" />
+                <div class="register-link">
+                    Liên hệ quản lý để có tài khoản
+                </div>
+            }
+        </form>
+    </div>
+</section>

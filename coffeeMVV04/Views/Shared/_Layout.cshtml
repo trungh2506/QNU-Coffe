@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/Login.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header id="home">
+        <div class="header-top">
+            <div class="container">
+                <div class="col">
+                    <ul>
+                        <li>
+                            Mon-Fri: 8am to 2pm
+                        </li>
+                        <li>
+                            Sat-Sun: 11am to 4pm
+                        </li>
+                        <li>
+                            <a href="tel:(+84)91 134 9819">(+84)91 134 9819</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <div class="nav-bar">
+                    <div id="nav-logo">
+                        <a href=""><img src="~/img/logo.png" /></a>
+                    </div>
+                    <div class="nav-menu">
+                        <ul>
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Menu", "Index", "Home", null, null, "menu", null, null)</li>
+                            <li>@Html.ActionLink("Review", "Index", "Home", null, null, "gallery", null, null)</li>
+                            <li><a href="#contact">About Us</a></li>
+                            @if (Session["UserID"] != null)
+                            {
+                                <li><a href=""><i class="fa-regular fa-user"></i> Admin</a></li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Login / Register", "Login", "Home")</li>
+                            }
+                        </ul><!-- #nav-menu-container -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header><!-- #header -->
+    @RenderBody()
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="row">
+                    <div class="col" style="width:50%">
+                        <h1>About Us</h1><br />
+                        <h3>
+                            Bài nhóm môn công nghệ .Net
+                        </h3>
+                        <h3>Lập bằng ASP.net MVC và C#</h3><br />
+                        <h3 style="color:yellow">
+                            Copyright ©2022 KTPM-K43: Trung, An, Sou.
+                        </h3>
+
+                    </div>
+                    <div class="col" style="width:50%">
+                        <h1>Follow Us</h1>
+                        <div class="row">
+                            <a href="https://www.facebook.com/profile.php?id=100080711341691" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index sale";
+}
+<style>
+    .search-area {
+        width: 100%;
+        text-align: center;
+    }
+
+    input {
+        width: 50%;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: white;
+        background-color: cornflowerblue;
+        cursor: pointer;
+    }
+</style>
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers">5 người</div>
+            <div class="cardName">số lượng nhân viên</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-users"></i>
+        </div>
+    </div>
+</div>
+
+<div class="details">
+    <div class="recentMenu">
+        <div class="search-area">
+            <input type="text" placeholder="Tìm nhân viên" />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="cardHeader">
+            <h2>Danh sách nhân viên</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Họ tên</td>
+                    <td>Số điên thoại</td>
+                    <td>Email</td>
+                    <td>Mật khẩu</td>
+                    <td>địc chỉ</td>
+                    <td>Chức vụ</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NV001</td>
+                    <td>Nguyen van an</td>
+                    <td>01234567</td>
+                    <td>NVA@mail.com</td>
+                    <td>123456</td>
+                    <td>Quy nhơn</td>
+                    <td>Nhân viên bán hàng</td>
+                    <td>
+                        <a href="@Url.Action("Edit","Sale",new { idnv = "nv001" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

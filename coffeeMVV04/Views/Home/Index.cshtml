@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<section class="banner-area">
+    <div class="container">
+        <div class="banner-container">
+            <div class="banner-content">
+                <h1>Bắt đầu ngày mới</h1>
+                <h1>với Cafe đen</h1>
+                <button class="btn-buy">MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="menu" class="menu-area">
+    <div class="container">
+        <div class="menu-container">
+            <div style="text-align:center">
+                <h1 style="font-size:3rem;margin-bottom:.5rem">Hôm Nay Bạn Sẽ Uống Gì?</h1>
+                <h3>Tình yêu như ly cà phê vậy đó, nếu ngon và đậm sẽ khiến bạn mất ngủ</h3>
+            </div>
+            <div class="menu-grid">
+                @for (var i = 0; i < 9; i++)
+                {
+                    <a href="#" class="menu-info" style="color:black">
+                        <h4 style="float: left">Cappuccino</h4>
+                        <p style="float:right;color:forestgreen">$49</p>
+                        <p style="clear:both;"><br />Usage of the Internet is becoming more common due to rapid advance.</p>
+                    </a>}
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<section id="gallery" class="gallery-area">
+    <div class="container">
+        <div class="gallery-container">
+            <div style="text-align:center">
+                <h1 style="font-size:3rem;margin-bottom:.5rem">Bạn Thích Uống Cafe loại nào?</h1>
+                <h3>Cuộc đời là những giọt cà phê đen, ta là những viên đường ngọt</h3>
+            </div>
+            <div class="gallery-grid">
+                <div class="row">
+                    <div class="col">
+                        <img src="~/img/g1.jpg" />
+                        <img src="~/img/g2.jpg" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img src="~/img/g3.jpg" />
+                        <div class="row">
+                            <img src="~/img/g4.jpg" />
+                            <img src="~/img/g5.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

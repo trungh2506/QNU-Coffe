@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
+    <link href="~/Areas/Style/styleAdmin.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-sharp fa-solid fa-user-nurse"></i></span>
+                        <span class="title">Soulixi VILASIT</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","HomeAdmin")">
+                        <span class="icon"><i class="fa-sharp fa-solid fa-house"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Product")">
+                        <span class="icon"><i class="fa-solid fa-mug-saucer"></i></span>
+                        <span class="title">Quản lý danh mục</span>
+
+                    </a>
+                    <span id="btnDropDrown1" class="dropdown" onclick="DropDownMenu1()"><i class="fa-solid fa-caret-down"></i></span>
+                    <span class="sub-menu1">
+                        <a href="@Url.Action("Add","Product",new { Add = "category" })">
+                            <span class="icon"><i class="fa-solid fa-plus"></i></span>
+                            <span class="title">Thêm danh mục</span>
+                        </a>
+                        <a href="@Url.Action("Add","Product",new { Add = "product" })">
+                            <span class="icon"><i class="fa-solid fa-mug-hot"></i></span>
+                            <span class="title">Thêm Menu Mới </span>
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Sale")">
+                        <span class="icon"><i class="fa-solid fa-users"></i></span>
+                        <span class="title">Quản lý nhân viên</span>
+
+                    </a>
+                    <span id="btnDropDrown2" class="dropdown" onclick="DropDownMenu2()"><i class="fa-solid fa-caret-down"></i></span>
+                    <span class="sub-menu2">
+                        <a href="@Url.Action("Add","Sale")">
+                            <span class="icon"><i class="fa-solid fa-user-plus"></i></span>
+                            <span class="title">Thêm nhân viên</span>
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Setting")">
+                        <span class="icon"><i class="fa-sharp fa-solid fa-gear"></i></span>
+                        <span class="title">Cài đặt</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+                        <span class="title">Đăng suất</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="topbar">
+                <div id="toggle" class="toggle" onclick="toggle()">
+                    <i class="fa-sharp fa-solid fa-bars"></i>
+                </div>
+                <div class="user">
+                    <img src="~/Areas/Admin/img/admin001.jpg" />
+                </div>
+            </div>
+
+            @RenderBody()
+        </div>
+    </div>
+
+
+
+
+
+    <script src="~/Areas/Admin/Script/JavaScript.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

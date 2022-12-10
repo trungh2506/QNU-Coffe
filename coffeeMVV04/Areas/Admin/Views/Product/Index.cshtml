@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "Index Product";
+}
+<style>
+    .search-area{
+        width:100%;
+        text-align:center;
+    }
+    input {
+        width: 50%;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        outline:none;
+    }
+    button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        color:white;
+        background-color:cornflowerblue;
+        cursor:pointer;
+    }
+</style>
+
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers">3</div>
+            <div class="cardName">Damh mục tất cả</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-list"></i>
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <div class="numbers">10</div>
+            <div class="cardName">Menu nước uống</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-martini-glass-empty"></i>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">1</div>
+            <div class="cardName">đã hết quán</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+        </div>
+    </div>
+</div>
+
+<div class="details">
+    <div class="recentMenu">
+        <div class="cardHeader">
+            <h2>Danh mục</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID danh mục</td>
+                    <td>Tên danh mục</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CF</td>
+                    <td>Cafe</td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>TRA</td>
+                    <td>Trà</td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>TC</td>
+                    <td>Nước trái cây</td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+<div class="details">
+    <div class="recentMenu">
+        <div class="search-area">
+            <input type="text" placeholder="Tìm nước uống" />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="cardHeader">
+            <h2>Danh sách nước uống</h2>
+            <a href="#" class="btn">Xem Tất cả</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Tên nước uống</td>
+                    <td>Danh mục</td>
+                    <td>Mô tả</td>
+                    <td>Giá</td>
+                    <td>Giảm giá</td>
+                    <td>Số lượng</td>
+                    <td>Status</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>cf001</td>
+                    <td>Cafe đen</td>
+                    <td>cafe</td>
+                    <td> </td>
+                    <td>17,000</td>
+                    <td>0</td>
+                    <td>10</td>
+                    <td><span class="status online">còn</span></td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "product" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>tra001</td>
+                    <td>Trà Đào</td>
+                    <td>trà</td>
+                    <td> </td>
+                    <td>17,000</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td><span class="status owe">hết</span></td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "product" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>tra002</td>
+                    <td>Trà sữa</td>
+                    <td>trà</td>
+                    <td> </td>
+
+                    <td>17,000</td>
+                    <td>0</td>
+                    <td>10</td>
+                    <td><span class="status online">còn</span></td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "product" })  "><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
