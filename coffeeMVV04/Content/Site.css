@@ -1,4 +1,5 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto&display=swap');
+
 html {
     scroll-behavior: smooth;
 }
@@ -62,16 +63,44 @@ header {
     }
 
         .nav-bar .nav-menu ul li {
+            position: relative;
             display: inline;
         }
 
-            .nav-bar .nav-menu ul li a {
-                padding: 1rem;
+.sub {
+    display: none;
+    width: 120%;
+    background-color: rgb(44 10 10 / 0.80);
+    position: absolute;
+    bottom: -150px;
+    z-index: 1;
+    left: 10px;
+}
+
+            .nav-bar .nav-menu li .sub li {
+                margin-bottom: 25px;
+                display: block;
             }
-                .nav-bar .nav-menu ul li a:hover {
-                    padding: 1rem;
-                    border-bottom: 2px solid white;
+
+                .nav-bar .nav-menu li .sub li a {
+                    width: 100%;
+                    color: white;
                 }
+
+        .nav-bar .nav-menu ul li a {
+            padding: 1rem;
+        }
+
+            ul li a:hover {
+                padding: 1rem;
+                border-bottom: 2px solid white;
+            }
+
+                ul li:hover .sub {
+                    display: block;
+                }
+
+
 /*End header*/
 /*Start banner*/
 .banner-area {
