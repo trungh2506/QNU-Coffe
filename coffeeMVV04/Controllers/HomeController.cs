@@ -48,6 +48,7 @@ namespace coffeeMVV04.Controllers
                     Session["HoTen"] = data.FirstOrDefault().HoTen;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["UserID"] = data.FirstOrDefault().ID;
+                    Session["Admin"] = data.FirstOrDefault().Admin;
                     return RedirectToAction("Index");
                 }
                 else
