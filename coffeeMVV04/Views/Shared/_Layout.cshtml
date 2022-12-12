@@ -43,7 +43,14 @@
                             <li><a href="#contact">About Us</a></li>
                             @if (Session["UserID"] != null)
                             {
-                                <li><a href=""><i class="fa-regular fa-user"></i> Admin</a></li>
+                                <li>
+                                    <a href=""><i class="fa-regular fa-user"></i> Admin</a>
+                                    <ul class="sub">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">1</a></li>
+                                    </ul>
+                                </li>
                             }
                             else
                             {
