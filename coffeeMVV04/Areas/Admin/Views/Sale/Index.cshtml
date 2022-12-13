@@ -1,6 +1,8 @@
-﻿
+﻿@model IEnumerable<coffeeMVV04.Model.EF.NguoiDung>
+@*@model coffeeMVV04.Model.EF.NguoiDung*@
 @{
     ViewBag.Title = "Index sale";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
     .search-area {
@@ -26,8 +28,9 @@
 </style>
 <div class="cardBox">
     <div class="card">
+      
         <div>
-            <div class="numbers">5 người</div>
+            <div class="numbers">5</div>
             <div class="cardName">số lượng nhân viên</div>
         </div>
         <div class="iconBox">
@@ -45,33 +48,53 @@
         <div class="cardHeader">
             <h2>Danh sách nhân viên</h2>
         </div>
-        <table>
-            <thead>
+        <table class="table">
+            <tr>
+            <tr>
+                <tb>STT</tb>
+                <td>ID</td>
+                <td>Họ tên</td>
+                <td>Số điên thoại</td>
+                <td>Email</td>
+                <td>Mật khẩu</td>
+                <td>Địa chỉ</td>
+                <td>Admin</td>
+            </tr>
+            
+
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <td>ID</td>
-                    <td>Họ tên</td>
-                    <td>Số điên thoại</td>
-                    <td>Email</td>
-                    <td>Mật khẩu</td>
-                    <td>địc chỉ</td>
-                    <td>Chức vụ</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>NV001</td>
-                    <td>Nguyen van an</td>
-                    <td>01234567</td>
-                    <td>NVA@mail.com</td>
-                    <td>123456</td>
-                    <td>Quy nhơn</td>
-                    <td>Nhân viên bán hàng</td>
+                  
                     <td>
-                        <a href="@Url.Action("Edit","Sale",new { idnv = "nv001" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admin)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit","Sale",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="@Url.Action("Delete","Sale",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+
                     </td>
                 </tr>
-            </tbody>
+            }
+
         </table>
     </div>
 

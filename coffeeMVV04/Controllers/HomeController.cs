@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using coffeeMVV04.Models;
+using coffeeMVV04.Model;
+using coffeeMVV04.Model.EF;
 
 namespace coffeeMVV04.Controllers
 {
     public class HomeController : Controller
     {
-        QNU_CoffeeEntities QNU_CoffeeEntities = new QNU_CoffeeEntities();
+       Model1 Model1 = new Model1();
+        /*QNU_CoffeeEntities QNU_CoffeeEntities = new QNU_CoffeeEntities();*/
         public ActionResult Index()
         {
             return View();
@@ -42,7 +44,7 @@ namespace coffeeMVV04.Controllers
         {
             if (ModelState.IsValid)
             {
-                var data = QNU_CoffeeEntities.NguoiDungs.Where(s => s.SDT.Equals(sdt) && s.Password == password).ToList();
+                var data =Model1.NguoiDungs.Where(s => s.SDT.Equals(sdt) && s.Password == password).ToList();
                 if (data.Count() > 0)
                 {
                     Session["HoTen"] = data.FirstOrDefault().HoTen;

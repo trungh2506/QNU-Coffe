@@ -1,4 +1,4 @@
-namespace coffeeMVV04.Models
+namespace coffeeMVV04.Model.EF
 {
     using System;
     using System.Collections.Generic;

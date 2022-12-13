@@ -1,11 +1,16 @@
-﻿
+﻿@model coffeeMVV04.Model.EF.NguoiDung
 @{
     ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
     input {
         width: 100%;
         padding: 10px;
+    }
+    .form-group {
+        margin-top: 10px;
+       
     }
 
     button {
@@ -22,48 +27,49 @@
             background-color: green;
         }
 </style>
-
-<div class="details" style="margin:0 auto;width:50%">
-    <div class="recentMenu">
-        <div class="cardHeader">
-            <h2>Thêm thông tin nhân viên mới</h2>
+@using (Html.BeginForm("Add", "Sale", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+    <div class="details" style="margin:0 auto;width:70%">
+        <div class="recentMenu">
+            <div class="cardHeader">
+                <h2>Thêm thông tin nhân viên mới</h2>
+            </div>
+          @Html.ValidationSummary(true) 
+                <div class="form-group">
+                    <label for="InputID"> ID Nhân viên</label>
+                    @Html.TextBoxFor(a => a.ID, new { @Class = "form-control", @placeHolder = "ID nhân viên" })
+                    @Html.ValidationMessageFor(a => a.ID, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="InputName"> Tên nhân viên</label>
+                    @Html.TextBoxFor(a => a.HoTen, new { @Class = "form-control", @placeHolder = "Tên nhân viên" })
+                    @Html.ValidationMessageFor(a => a.HoTen, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="InputSDT"> Số điện thoại</label>
+                    @Html.TextBoxFor(a => a.SDT, new { @Class = "form-control", @placeHolder = "Số điện thoại" })
+                    @Html.ValidationMessageFor(a => a.SDT, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail"> Email</label>
+                    @Html.TextBoxFor(a => a.Email, new { @Class = "form-control", @placeHolder = "Email" })
+                    @Html.ValidationMessageFor(a => a.Email, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="InputPass"> Mật khẩu</label>
+                    @Html.TextBoxFor(a => a.Password, new { @Class = "form-control", @placeHolder = "Mật khẩu" })
+                    @Html.ValidationMessageFor(a => a.Password, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="InputAdress"> Địa chỉ</label>
+                    @Html.TextBoxFor(a => a.DiaChi, new { @Class = "form-control", @placeHolder = "Địa chi" })
+                    @Html.ValidationMessageFor(a => a.DiaChi, null, new { @class = "text-danger" })
+                    </div>
+                <div class="form-group">
+                    <lable>Admin @Html.CheckBoxFor(a => a.Admin, true)</lable>
+                </div> 
         </div>
-        <table>
-            <thead>
-            <tbody>
-                <tr>
-                    <td>ID</td>
-                    <td>000</td>
-                </tr>
-                <tr>
-                    <td>Họ tên</td>
-                    <td><input type="text" /></td>
-
-                </tr>
-                <tr>
-                    <td>Số điên thoại</td>
-                    <td><input type="text" /></td>
-
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input type="email" /></td>
-                </tr>
-                <tr>
-                    <td>Mật khẩu</td>
-                    <td><input type="text" /></td>
-                </tr>
-                <tr>
-                    <td>địc chỉ</td>
-                    <td><input type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Chức vụ</td>
-                    <td>Nhân viên bán hàng</td>
-                </tr>
-            </tbody>
-        </table>
+        <button> Thêm </button>
     </div>
-    <button>Thêm</button>
-</div>
-
+}

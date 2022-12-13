@@ -1,4 +1,4 @@
-namespace coffeeMVV04.Models
+namespace coffeeMVV04.Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,9 +16,12 @@ namespace coffeeMVV04.Models
         }
 
         public int ID { get; set; }
+        [Required]
+        
 
         [StringLength(200)]
         public string HoTen { get; set; }
+        [Required(ErrorMessage = "Khong duoc bo trong")]
 
         [StringLength(10)]
         public string SDT { get; set; }
@@ -32,7 +35,7 @@ namespace coffeeMVV04.Models
         [StringLength(400)]
         public string DiaChi { get; set; }
 
-        public bool? Admin { get; set; }
+        public bool Admin { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }

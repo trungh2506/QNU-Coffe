@@ -1,6 +1,6 @@
 ﻿@model coffeeMVV04.Model.EF.NguoiDung
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -25,13 +25,13 @@
             background-color: green;
         }
 </style>
-@using (Html.BeginForm("Edit", "Sale", FormMethod.Post, new { }))
+@using (Html.BeginForm("Delete", "Sale", FormMethod.Post, new { }))
 {
     @Html.AntiForgeryToken()
     <div class="details" style="margin:0 auto;width:70%">
         <div class="recentMenu">
             <div class="cardHeader">
-                <h2>Sửa thông tin nhân viên</h2>
+                <h2>Xóa thông tin nhân viên</h2>
             </div>
             @Html.ValidationSummary(true)
             <div class="form-group">
@@ -68,7 +68,7 @@
                 <lable>Admin @Html.CheckBoxFor(a => a.Admin, true)</lable>
             </div>
         </div>
-        <button> Lưa </button>
+        <button> Xóa </button>
     </div>
 }
 }

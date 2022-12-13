@@ -1,4 +1,4 @@
-namespace coffeeMVV04.Models
+namespace coffeeMVV04.Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -6,28 +6,21 @@ namespace coffeeMVV04.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("HoaDon")]
-    public partial class HoaDon
+    [Table("DanhMuc")]
+    public partial class DanhMuc
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HoaDon()
+        public DanhMuc()
         {
-            ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+            SanPhams = new HashSet<SanPham>();
         }
 
         public int ID { get; set; }
 
-        public int? IDUser { get; set; }
-
-        public DateTime? Date { get; set; }
-
-        public bool? TrangThai { get; set; }
-
-        public double? TongCong { get; set; }
+        [StringLength(100)]
+        public string TenDanhMuc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-
-        public virtual NguoiDung NguoiDung { get; set; }
+        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

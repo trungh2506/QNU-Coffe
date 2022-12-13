@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace coffeeMVV04.Models
+namespace coffeeMVV04.Model.EF
 {
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=QNU_CoffeeEntities")
+            : base("name=Model1")
         {
         }
 
