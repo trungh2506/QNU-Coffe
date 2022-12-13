@@ -18,8 +18,8 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         // GET: Admin/Sale
         public ActionResult Index()
         {
-            var NguoiDungs = db.NguoiDungs;
-            var items = db.NguoiDungs;
+            var NguoiDungs = db.NguoiDung;
+            var items = db.NguoiDung;
             return View(NguoiDungs.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguoiDung nguoiDung = db.NguoiDungs.Find(id);
+            NguoiDung nguoiDung = db.NguoiDung.Find(id);
             if (nguoiDung == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguoiDung nguoiDung = db.NguoiDungs.Find(id);
+            NguoiDung nguoiDung = db.NguoiDung.Find(id);
             if (nguoiDung == null)
             {
                 return HttpNotFound();
@@ -62,7 +62,7 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         { 
             if (ModelState.IsValid)
             {
-               db.NguoiDungs.Add(model);
+               db.NguoiDung.Add(model);
                db.SaveChanges();
                return RedirectToAction("Index");
             }
@@ -72,8 +72,8 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            NguoiDung nguoiDung = db.NguoiDungs.Find(id);
-            db.NguoiDungs.Remove(nguoiDung);
+            NguoiDung nguoiDung = db.NguoiDung.Find(id);
+            db.NguoiDung.Remove(nguoiDung);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -137,7 +137,7 @@
     <Compile Include="Model\EF\Model1.cs" />
     <Compile Include="Model\EF\NguoiDung.cs" />
     <Compile Include="Model\EF\SanPham.cs" />
-    <Compile Include="Model\EF\sysdiagram.cs" />
+    <Compile Include="Model\EF\sysdiagrams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
