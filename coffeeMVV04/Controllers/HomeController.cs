@@ -44,7 +44,7 @@ namespace coffeeMVV04.Controllers
         {
             if (ModelState.IsValid)
             {
-                var data =Model1.NguoiDung.Where(s => s.SDT.Equals(sdt) && s.Password == password).ToList();
+                var data = Model1.NguoiDungs.Where(s => s.SDT.Equals(sdt) && s.Password == password).ToList();
                 if (data.Count() > 0)
                 {
                     Session["HoTen"] = data.FirstOrDefault().HoTen;

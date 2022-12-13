@@ -6,7 +6,7 @@ namespace coffeeMVV04.Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class sysdiagrams
+    public partial class sysdiagram
     {
         [Required]
         [StringLength(128)]

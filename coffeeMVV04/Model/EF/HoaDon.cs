@@ -12,7 +12,7 @@ namespace coffeeMVV04.Model.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDon()
         {
-            ChiTietHoaDon = new HashSet<ChiTietHoaDon>();
+            ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
         }
 
         public int ID { get; set; }
@@ -26,7 +26,7 @@ namespace coffeeMVV04.Model.EF
         public double? TongCong { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDon { get; set; }
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
 
         public virtual NguoiDung NguoiDung { get; set; }
     }

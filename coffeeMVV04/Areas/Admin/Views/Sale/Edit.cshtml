@@ -65,7 +65,9 @@
                 @Html.ValidationMessageFor(a => a.DiaChi, null, new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                <lable>Admin @Html.CheckBoxFor(a => a.Admin, true)</lable>
+                <label>Admin</label>
+                <label>Yes @Html.RadioButtonFor(a => a.Admin, true)</label>
+                <label>No @Html.RadioButtonFor(a => a.Admin, false)</label>
             </div>
         </div>
         <button> Lưa </button>
