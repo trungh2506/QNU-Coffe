@@ -12,7 +12,17 @@
     @Styles.Render("~/Content/Login.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
+    <style>
+        .login.li a,
+        .user.li>a {
+            background-color: forestgreen;
+        }
+        .logout.li a{
+            background-color:red;
+        }
+    </style>
     <header id="home">
         <div class="header-top">
             <div class="container">
@@ -25,7 +35,7 @@
                             Sat-Sun: 11am to 4pm
                         </li>
                         <li>
-                            <a href="tel:(+84)91 134 9819">(+84)91 134 9819</a>
+                            tel:(+84)91 134 9819
                         </li>
                     </ul>
                 </div>
@@ -45,22 +55,22 @@
                             <li><a href="#contact">About Us</a></li>
                             @if (Session["UserID"] != null)
                             {
-                                <li>
+                                <li class="user li">
                                     <a href=""><i class="fa-regular fa-user"></i> @Session["HoTen"]</a>
                                     <ul class="sub">
                                         <li><a href="#">Profile</a></li>
                                         <li><a href="#">Order</a></li>
                                         @if (Session["Admin"].ToString() == "True")
-                                         {
-                                            <li>@Html.ActionLink("Admin Page", "Index", "HomeAdmin", new {area = "Admin"}, null)</li>
-                                         }
-                                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                                        {
+                                            <li>@Html.ActionLink("Admin Page", "Index", "HomeAdmin", new { area = "Admin" }, null)</li>
+                                        }
+                                        <li class="logout li">@Html.ActionLink("Logout", "Logout", "Home")</li>
                                     </ul>
                                 </li>
                             }
                             else
                             {
-                                <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                                <li class="login li">@Html.ActionLink("Login", "Login", "Home")</li>
                             }
                         </ul><!-- #nav-menu-container -->
                     </div>
