@@ -21,5 +21,9 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult Category()
+        {
+            return View();
+        }
     }
 }
