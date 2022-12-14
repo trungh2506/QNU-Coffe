@@ -3,5 +3,85 @@
     ViewBag.Title = "Category";
 }
 
-<h2>Category</h2>
+<style>
+    .search-area {
+        width: 100%;
+        text-align: center;
+    }
+
+    input {
+        width: 50%;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: white;
+        background-color: cornflowerblue;
+        cursor: pointer;
+    }
+</style>
+
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers">3</div>
+            <div class="cardName">Damh mục tất cả</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-list"></i>
+        </div>
+    </div>
+
+</div>
+<div class="details">
+    <div class="recentMenu">
+        <div class="cardHeader">
+            <h2>Danh mục</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID danh mục</td>
+                    <td>Tên danh mục</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CF</td>
+                    <td>Cafe</td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>TRA</td>
+                    <td>Trà</td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>TC</td>
+                    <td>Nước trái cây</td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
 

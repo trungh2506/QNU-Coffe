@@ -26,6 +26,11 @@ function DropDownMenu2() {
     var sub = document.querySelector('.sub-menu2');
     sub.classList.toggle('active');
 }
+function DropDownMenu3() {
+    var dropdown = document.querySelector('.icon');
+    var sub = document.querySelector('.sub-menu3');
+    sub.classList.toggle('active');
+}
 
 
 

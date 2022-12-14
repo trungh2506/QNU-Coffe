@@ -143,9 +143,10 @@ body {
         box-shadow: 35px -35px 0 10px var(--white);
         pointer-events: none;
     }
-    
+
     .navigation ul li .sub-menu1,
-    .navigation ul li .sub-menu2{
+    .navigation ul li .sub-menu2,
+    .navigation ul li .sub-menu3 {
         position: relative;
         left: 10px;
         width: 100%;
@@ -153,14 +154,16 @@ body {
     }
 
         .navigation ul li .sub-menu1 a,
-        .navigation ul li .sub-menu2 a {
+        .navigation ul li .sub-menu2 a,
+        .navigation ul li .sub-menu3 a{
             border-top: 1px solid rgba(0,0,0,0.1);
         }
 
         .navigation ul li .sub-menu1.active,
-        .navigation ul li .sub-menu2.active
+        .navigation ul li .sub-menu2.active,
+        .navigation ul li .sub-menu3.active
         /*.navigation ul .hovered .sub-menu1,
-        .navigation ul .hovered .sub-menu2*/{
+        .navigation ul .hovered .sub-menu2*/ {
             display: block;
         }
 

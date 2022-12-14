@@ -25,8 +25,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index","Product")">
-                        <span class="icon"><i class="fa-solid fa-mug-saucer"></i></span>
+                    <a href="@Url.Action("Category","Product")">
+                        <span class="icon"><i class="fa-solid fa-list"></i></span>
                         <span class="title">Quản lý danh mục</span>
 
                     </a>
@@ -36,8 +36,17 @@
                             <span class="icon"><i class="fa-solid fa-plus"></i></span>
                             <span class="title">Thêm danh mục</span>
                         </a>
+                    </span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Product")">
+                        <span class="icon"><i class="fa-solid fa-mug-saucer"></i></span>
+                        <span class="title">Quản lý sản phẩm</span>
+                    </a>
+                    <span id="btnDropDrown2" class="dropdown" onclick="DropDownMenu2()"><i class="fa-solid fa-caret-down"></i></span>
+                    <span class="sub-menu2">
                         <a href="@Url.Action("Add","Product",new { Add = "product" })">
-                            <span class="icon"><i class="fa-solid fa-mug-hot"></i></span>
+                            <span class="icon"><i class="fa-solid fa-plus"></i></span>
                             <span class="title">Thêm Menu Mới </span>
                         </a>
                     </span>
@@ -48,8 +57,8 @@
                         <span class="title">Quản lý nhân viên</span>
 
                     </a>
-                    <span id="btnDropDrown2" class="dropdown" onclick="DropDownMenu2()"><i class="fa-solid fa-caret-down"></i></span>
-                    <span class="sub-menu2">
+                    <span id="btnDropDrown3" class="dropdown" onclick="DropDownMenu3()"><i class="fa-solid fa-caret-down"></i></span>
+                    <span class="sub-menu3">
                         <a href="@Url.Action("Add","Sale")">
                             <span class="icon"><i class="fa-solid fa-user-plus"></i></span>
                             <span class="title">Thêm nhân viên</span>
