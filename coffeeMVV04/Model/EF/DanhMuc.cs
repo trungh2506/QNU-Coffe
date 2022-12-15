@@ -15,6 +15,7 @@ namespace coffeeMVV04.Model.EF
             SanPhams = new HashSet<SanPham>();
         }
 
+
         public int ID { get; set; }
 
         [StringLength(100)]

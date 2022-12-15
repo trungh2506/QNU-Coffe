@@ -1,6 +1,8 @@
-﻿
+﻿@model IEnumerable<coffeeMVV04.Model.EF.SanPham>
+
 @{
     ViewBag.Title = "Index Product";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
     .search-area{
@@ -27,7 +29,7 @@
 
     <div class="card">
         <div>
-            <div class="numbers">10</div>
+            <div class="numbers">@ViewBag.Count</div>
             <div class="cardName">Menu nước uống</div>
         </div>
         <div class="iconBox">
@@ -37,7 +39,7 @@
     <div class="card">
         <div>
             <div class="numbers">1</div>
-            <div class="cardName">đã hết quán</div>
+            <div class="cardName">Quán đã hết</div>
         </div>
         <div class="iconBox">
             <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
@@ -60,60 +62,55 @@
                 <tr>
                     <td>Id</td>
                     <td>Tên nước uống</td>
+                    <td>Avatar</td>
                     <td>Danh mục</td>
                     <td>Mô tả</td>
                     <td>Giá</td>
                     <td>Giảm giá</td>
-                    <td>Số lượng</td>
                     <td>Status</td>
                     <td></td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>cf001</td>
-                    <td>Cafe đen</td>
-                    <td>cafe</td>
-                    <td> </td>
-                    <td>17,000</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td><span class="status online">còn</span></td>
-                    <td>
-                        <a href="@Url.Action("Edit","Product",new { edit = "product" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>tra001</td>
-                    <td>Trà Đào</td>
-                    <td>trà</td>
-                    <td> </td>
-                    <td>17,000</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td><span class="status owe">hết</span></td>
-                    <td>
-                        <a href="@Url.Action("Edit","Product",new { edit = "product" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>tra002</td>
-                    <td>Trà sữa</td>
-                    <td>trà</td>
-                    <td> </td>
-
-                    <td>17,000</td>
-                    <td>0</td>
-                    <td>10</td>
-                    <td><span class="status online">còn</span></td>
-                    <td>
-                        <a href="@Url.Action("Edit","Product",new { edit = "product" })  "><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
-                    </td>
-                </tr>
-            </tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenSP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Avatar)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MoTaNgan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GiaSP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GiamGiaSP)
+                        </td>
+                        @if(item.TinhTrang.ToString() == "True")
+                            {
+                            <td class="status online">còn</td>
+                            }
+                            else
+                            {
+                            <td class="status owe">hết</td>
+                            }
+                        <td>
+                            <a href="@Url.Action("Edit", "Product", new { edit = "product" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                            <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                        </td>
+                    </tr>}
+             
+                </tbody>
         </table>
     </div>
 </div>

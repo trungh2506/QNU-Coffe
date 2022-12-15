@@ -1,4 +1,5 @@
-﻿
+﻿@model coffeeMVV04.Model.EF.DanhMuc
+
 @{
     ViewBag.Title = "Add";
 }
@@ -24,31 +25,27 @@
         }
 </style>
 
+
 @{string lam = Request.Params["Add"];
     if (lam == "category")
     {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
         <div class="details" style="margin:0 auto;width:50%">
             <div class="recentMenu">
                 <div class="cardHeader">
-                    <h2>Sửa danh mục</h2>
+                    <h2>Thêm danh mục</h2>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>id danh mục</td>
-                            <td>tên danh mục</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>CF</td>
-                            <td><input type="text" name="newNameCategory" /></td>
-                        </tr>
-                    </tbody>
-                </table>
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    <label for="InputID">Tên danh mục</label>
+                    @Html.TextBoxFor(a => a.TenDanhMuc, new { @Class = "form-control", @placeHolder = "Tên danh mục" })
+                    @Html.ValidationMessageFor(a => a.TenDanhMuc, null, new { @class = "text-danger" })
+                </div>
             </div>
             <button>Thêm</button>
-        </div>
+        </div>}
     }
     else
     {

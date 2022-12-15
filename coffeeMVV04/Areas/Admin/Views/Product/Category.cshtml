@@ -1,6 +1,8 @@
-﻿
+﻿@model IEnumerable<coffeeMVV04.Model.EF.DanhMuc>
+
 @{
     ViewBag.Title = "Category";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -29,7 +31,7 @@
 <div class="cardBox">
     <div class="card">
         <div>
-            <div class="numbers">3</div>
+            <div class="numbers">@ViewBag.Count</div>
             <div class="cardName">Damh mục tất cả</div>
         </div>
         <div class="iconBox">
@@ -52,30 +54,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>CF</td>
-                    <td>Cafe</td>
-                    <td>
-                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>TRA</td>
-                    <td>Trà</td>
-                    <td>
-                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>TC</td>
-                    <td>Nước trái cây</td>
-                    <td>
-                        <a href="@Url.Action("Edit","Product",new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                        <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
-                    </td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenDanhMuc)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Product", new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                            <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
