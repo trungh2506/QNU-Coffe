@@ -17,6 +17,5 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         {
             return View();
         }
-
     }
 }
