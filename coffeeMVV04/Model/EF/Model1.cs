@@ -1,4 +1,3 @@
-using coffeeMVV04.Model.EF;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -9,7 +8,7 @@ namespace coffeeMVV04.Model.EF
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=QNU_CoffeeEntities")
+            : base("name=Model11")
         {
         }
 
@@ -19,8 +18,7 @@ namespace coffeeMVV04.Model.EF
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-       
-       
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DanhMuc>()

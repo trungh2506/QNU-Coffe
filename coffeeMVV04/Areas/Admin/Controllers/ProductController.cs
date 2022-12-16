@@ -72,7 +72,6 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         {
             CountCategory();
             return View(db.DanhMucs.ToList());
-           /* return View();*/
         }
         public ActionResult AddProduct()
         {
@@ -134,34 +133,25 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         }
     
         [HttpPost]
-        public ActionResult AddProduct([Bind(Include ="TenSP,Avatar,IDDanhMuc,MoTaNgan,GiaSP,GiamGiaSP,TinhTrang")]SanPham ojbProduct)
+        public ActionResult AddProduct(SanPham ojbProduct, HttpPostedFileBase ImageUpload)
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    if (ojbProduct.ImageUpload != null)
+                db.SanPhams.Add(ojbProduct);
+                if (ImageUpload != null)
                     {
-                        string fileName = Path.GetFileNameWithoutExtension(ojbProduct.ImageUpload.FileName);
-                        string extension = Path.GetExtension(ojbProduct.ImageUpload.FileName);
-                        fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss") + extension);
+                        string fileName = "";
+                        fileName = ImageUpload.FileName;
+                        //string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
+                        //string extension = Path.GetExtension(ImageUpload.FileName);
+                        //fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss") + extension);
+                        //fileName = (fileName + "." + extension);
+                        ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Areas/Admin/img/"), fileName));
                         ojbProduct.Avatar = fileName;
-                        ojbProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Areas/Admin/img/"), fileName));
+                        db.SaveChanges();
                     }
-                    db.SanPhams.Add(ojbProduct);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-
-                }
-                catch (Exception)
-                {
-
-                    return RedirectToAction("Index");
-
-                }
             }
-            @ViewBag.IDDanhMuc = new SelectList(db.DanhMucs, "ID", "TenDanhMuc", ojbProduct.IDDanhMuc);
-            return View(ojbProduct);
+            return RedirectToAction("Index");
         }
     }
     

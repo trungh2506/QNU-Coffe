@@ -40,8 +40,5 @@ namespace coffeeMVV04.Model.EF
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
 
         public virtual DanhMuc DanhMuc { get; set; }
-
-        [NotMapped]
-        public System.Web.HttpPostedFileBase ImageUpload { get; set; }
     }
 }

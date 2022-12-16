@@ -28,8 +28,8 @@
 <div class="cardBox">
     <div class="card">
         <div>
-            <div class="numbers">3</div>
-            <div class="cardName">Damh mục tất cả</div>
+            <div class="numbers">...</div>
+            <div class="cardName">Danh mục tất cả</div>
         </div>
         <div class="iconBox">
             <i class="fa-solid fa-list"></i>
@@ -38,7 +38,7 @@
 
     <div class="card">
         <div>
-            <div class="numbers">10</div>
+            <div class="numbers">@ViewBag.Count</div>
             <div class="cardName">Menu nước uống</div>
         </div>
         <div class="iconBox">
@@ -74,10 +74,10 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DanhMuc.ID)
+                            ...
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
+                            ...
                         </td>
                         <td>
                             <a href="@Url.Action("Edit","Product",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
@@ -126,7 +126,7 @@
                             @Html.DisplayFor(modelItem => item.TenSP)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Avatar)
+                            <img style="width: 100px; height: 100px" src="~/Areas/Admin/img/@item.Avatar"/>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
@@ -142,11 +142,11 @@
                         </td>
                         @if(item.TinhTrang.ToString() == "True")
                             {
-                            <td class="status online">còn</td>
+                                <td><span class="status online">còn</span></td>
                             }
                             else
                             {
-                            <td class="status owe">hết</td>
+                                <td><span class="status owe">hết</span></td>
                             }
                         <td>
                             <a href="@Url.Action("EditProduct","Product",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
