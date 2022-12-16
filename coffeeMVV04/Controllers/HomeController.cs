@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using coffeeMVV04.Model;
 using coffeeMVV04.Model.EF;
+using System.IO;
+using System.Data.Entity;
 
 namespace coffeeMVV04.Controllers
 {
     public class HomeController : Controller
     {
-       Model1 Model1 = new Model1();
+        private Model1 Model1 = new Model1();
         /*QNU_CoffeeEntities QNU_CoffeeEntities = new QNU_CoffeeEntities();*/
         public ActionResult Index()
         {
-            return View();
+            return View(Model1.SanPhams.ToList());
         }
 
         public ActionResult About()

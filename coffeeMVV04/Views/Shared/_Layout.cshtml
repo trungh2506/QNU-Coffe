@@ -1,4 +1,4 @@
-﻿@model coffeeMVV04.Model.EF.NguoiDung
+﻿@model IEnumerable<coffeeMVV04.Model.EF.SanPham>
 
 <!DOCTYPE html>
 <html>
@@ -16,11 +16,13 @@
 <body>
     <style>
         .login.li a,
-        .user.li>a {
+        .user.li > a {
             background-color: forestgreen;
+            border-radius: 20px;
         }
-        .logout.li a{
-            background-color:red;
+
+        .logout.li a {
+            background-color: red;
         }
     </style>
     <header id="home">

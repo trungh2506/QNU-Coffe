@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<coffeeMVV04.Model.EF.SanPham>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -21,13 +23,14 @@
                 <h3>Tình yêu như ly cà phê vậy đó, nếu ngon và đậm sẽ khiến bạn mất ngủ</h3>
             </div>
             <div class="menu-grid">
-                @for (var i = 0; i < 9; i++)
+                @foreach (var item in Model)
                 {
                     <a href="#" class="menu-info" style="color:black">
-                        <h4 style="float: left">Cappuccino</h4>
-                        <p style="float:right;color:forestgreen">$49</p>
-                        <p style="clear:both;"><br />Usage of the Internet is becoming more common due to rapid advance.</p>
-                    </a>}
+                        <h4 style="float: left">@item.TenSP</h4>
+                        <p style="float:right;color:forestgreen">@item.GiaSP</p>
+                        <p style="clear:both;"><br />@item.MoTaNgan</p>
+                    </a>
+                }
 
             </div>
         </div>
