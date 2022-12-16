@@ -1,4 +1,4 @@
-﻿
+﻿@model coffeeMVV04.Model.EF.DanhMuc
 @{
     ViewBag.Title = "Edit product";
 }
@@ -21,100 +21,33 @@
         button:hover {
             background-color: green;
         }
-</style>
-
-@{string lam = Request.Params["Edit"];
-    if (lam == "category")
-    {
-    <div class="details" style="margin:0 auto;width:50%">
-        <div class="recentMenu">
-            <div class="cardHeader">
-                <h2>Sửa thông tin nhân viên</h2>
+</style>A
+        @using (Html.BeginForm())
+        {
+            Html.AntiForgeryToken();
+            <div class="details" style="margin:0 auto;width:70%">
+                <div class="recentMenu">
+                    <div class="cardHeader">
+                        <h2>Sửa danh mục</h2>
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID)
+                    <div class="form-group">
+                        <label for="InputID"> ID danh mục</label>
+                        @Html.TextBoxFor(a => a.ID, new { @Class = "form-control", @placeHolder = "ID Danh mục" })
+                        @Html.ValidationMessageFor(a => a.ID, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="InputID"> Tên danh mục</label>
+                        @Html.EditorFor(a => a.TenDanhMuc, new { @Class = "form-control", @placeHolder = "Tên danh mục" })
+                        @Html.ValidationMessageFor(a => a.TenDanhMuc, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <button> Lưa </button>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <td>id danh mục</td>
-                        <td>tên danh mục</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CF</td>
-                        <td><input type="text" name="newNameCategory" /></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <button>Lưu</button>
-    </div>
-    }
-    else
-    {
-<div class="details" style="margin:0 auto;width:50%">
-    <div class="recentMenu">
-        <div class="cardHeader">
-            <h2>Sửa sản phẩm</h2>
-        </div>
-        <table>
-            <tbody>
-                <tr>
-                    <td>id</td>
-                    <td>CF001</td>
-                </tr>
-                <tr>
-                    <td>tên sản phẩm</td>
-                    <td><input type="text" name="newPDName" /></td>
-                </tr>
-                <tr>
-                    <td>Avatar</td>
-                    <td><input type="file"></td>
-                </tr>
-                <tr>
-                    <td>danh muc</td>
-                    <td>
-                        <select>
-                            <option value="1">Cafe</option>
-                            <option value="2">Trà</option>
-                            <option value="3">Nước trái cay</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Mo tả</td>
-                    <td>
-                        <input type="text" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Giá</td>
-                    <td><input type="number" /></td>
-                </tr>
-                <tr>
-                    <td>Giảm giá</td>
-                    <td>
-                        <input type="number" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>số lượng</td>
-                    <td>
-                        <input type="number" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>tình trạng</td>
-                    <td><input type="text" /></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <button>Lưu</button>
-</div>
-    }
+            }
+        } 
 }
-
-
-
-
+  
+    
 

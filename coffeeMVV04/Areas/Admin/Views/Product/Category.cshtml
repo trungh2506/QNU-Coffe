@@ -44,6 +44,7 @@
     <div class="recentMenu">
         <div class="cardHeader">
             <h2>Danh mục</h2>
+            <a href="@Url.Action("Category","Product")" class="btn">Xem Tất cả</a>
         </div>
         <table>
             <thead>
@@ -64,8 +65,8 @@
                             @Html.DisplayFor(modelItem => item.TenDanhMuc)
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit", "Product", new { edit = "category" })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                            <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                            <a href="@Url.Action("Edit","Product",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                            <a href="@Url.Action("Delete","Product",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
                         </td>
                     </tr>
                 }
@@ -74,7 +75,4 @@
     </div>
 
 </div>
-
-
-
 

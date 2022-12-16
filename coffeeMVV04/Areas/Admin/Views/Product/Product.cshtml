@@ -1,41 +1,33 @@
 ﻿@model IEnumerable<coffeeMVV04.Model.EF.SanPham>
 
 @{
-    ViewBag.Title = "Index Product";
+    ViewBag.Title = "Product";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
-    .search-area{
-        width:100%;
-        text-align:center;
+    .search-area {
+        width: 100%;
+        text-align: center;
     }
+
     input {
         width: 50%;
         margin: 10px;
         padding: 10px;
         border-radius: 10px;
-        outline:none;
+        outline: none;
     }
+
     button {
         padding: 10px 20px;
         border-radius: 10px;
-        color:white;
-        background-color:cornflowerblue;
-        cursor:pointer;
+        color: white;
+        background-color: cornflowerblue;
+        cursor: pointer;
     }
 </style>
 
 <div class="cardBox">
-    <div class="card">
-        <div>
-            <div class="numbers">3</div>
-            <div class="cardName">Damh mục tất cả</div>
-        </div>
-        <div class="iconBox">
-            <i class="fa-solid fa-list"></i>
-        </div>
-    </div>
-
     <div class="card">
         <div>
             <div class="numbers">10</div>
@@ -55,41 +47,6 @@
         </div>
     </div>
 </div>
-<div class="details">
-    <div class="recentMenu">
-        <div class="cardHeader">
-            <h2>Danh mục</h2>
-            <a href="@Url.Action("Category","Product")" class="btn">Xem Tất cả</a>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <td>ID danh mục</td>
-                    <td>Tên danh mục</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DanhMuc.ID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Edit","Product",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                            <a href="@Url.Action("Delete","Product",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
-</div>
 
 <div class="details">
     <div class="recentMenu">
@@ -99,7 +56,7 @@
         </div>
         <div class="cardHeader">
             <h2>Danh sách nước uống</h2>
-            <a href="@Url.Action("Product","Product")" class="btn">Xem Tất cả</a>
+            <a href="#" class="btn">Xem Tất cả</a>
         </div>
         <table>
             <thead>
@@ -140,22 +97,22 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.GiamGiaSP)
                         </td>
-                        @if(item.TinhTrang.ToString() == "True")
-                            {
+                        @if (item.TinhTrang.ToString() == "True")
+                        {
                             <td class="status online">còn</td>
-                            }
-                            else
-                            {
+                        }
+                        else
+                        {
                             <td class="status owe">hết</td>
-                            }
+                        }
                         <td>
-                            <a href="@Url.Action("EditProduct","Product",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                            <a href="@Url.Action("Edit", "Product", new {id = item.ID})"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
                             <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
                         </td>
-                    </tr>}
-             
-                </tbody>
+                    </tr>
+}
+
+            </tbody>
         </table>
     </div>
 </div>
-

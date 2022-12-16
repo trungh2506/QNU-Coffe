@@ -26,15 +26,15 @@
 </style>
 
 
-@{string lam = Request.Params["Add"];
+@{string lam = Request.Params["Delete"];
 
     using (Html.BeginForm())
     {
-            @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
         <div class="details" style="margin:0 auto;width:50%">
             <div class="recentMenu">
                 <div class="cardHeader">
-                    <h2>Thêm danh mục</h2>
+                    <h2>Xóa danh mục</h2>
                 </div>
                 @Html.ValidationSummary(true)
                 <div class="form-group">
@@ -43,9 +43,9 @@
                     @Html.ValidationMessageFor(a => a.TenDanhMuc, null, new { @class = "text-danger" })
                 </div>
             </div>
-            <button>Thêm</button>
+            <button>Xóa</button>
         </div>
-        }
     }
+}
 
 

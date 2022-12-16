@@ -208,8 +208,13 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Sale\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Category.cshtml" />
     <Content Include="Areas\Sales\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Product\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\DeleteProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Product.cshtml" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\jquery-3.6.1.min.js" />
