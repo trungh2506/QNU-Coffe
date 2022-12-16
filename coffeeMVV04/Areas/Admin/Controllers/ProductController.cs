@@ -20,31 +20,23 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             return View(db.SanPhams.ToList());
 
         }
-        /*public ActionResult Edit()
+        public ActionResult Product()
         {
-            return View();
-        }*/
-        public ActionResult EditProduct()
-        {
-            return View();
+            CountProduct();
+            return View(db.SanPhams.ToList());
         }
-        public ActionResult Delete(int? id)
+
+        public ActionResult Category()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DanhMuc danhMuc = db.DanhMucs.Find(id);
-            if (danhMuc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(danhMuc);
+            CountCategory();
+            return View(db.DanhMucs.ToList());
         }
-        public ActionResult DeleteProduct()
+        //View Add Danh Mục 
+        public ActionResult Add()
         {
             return View();
         }
+        // Đổ dữ liệu từ bảng vào form Edit (EditDanh mục)
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -58,38 +50,61 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             }
             return View(danhMuc);
         }
-        public ActionResult Product()
+        //Lấy dữ liệu từ bảng đổ vào from detetedanhmuc
+        public ActionResult Delete(int? id)
         {
-            CountProduct();
-            return View(db.SanPhams.ToList());
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DanhMuc danhMuc = db.DanhMucs.Find(id);
+            if (danhMuc == null)
+            {
+                return HttpNotFound();
+            }
+            return View(danhMuc);
         }
 
-        public ActionResult Add()
-        {
-            return View();
-        }
-        public ActionResult Category()
-        {
-            CountCategory();
-            return View(db.DanhMucs.ToList());
-        }
+        //View AddProduct
         public ActionResult AddProduct()
         {
-            
+
             ViewBag.IDDanhMuc = new SelectList(db.DanhMucs, "ID", "TenDanhMuc");
             return View();
         }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        //Lấy dữ liệu từ bảng đổ vào from EditProduct
+        public ActionResult EditProduct(int? id)
         {
-            DanhMuc danhMuc = db.DanhMucs.Find(id);
-            db.DanhMucs.Remove(danhMuc);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SanPham sanPham = db.SanPhams.Find(id);
+            if (sanPham == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.IDDanhMuc = new SelectList(db.DanhMucs, "ID", "TenDanhMuc", sanPham.IDDanhMuc);
+            return View(sanPham);
         }
 
+        //Lấy dữ liệu từ bảng đổ vào from deteteProduct
+        public ActionResult DeleteProduct(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SanPham sanPham = db.SanPhams.Find(id);
+            if (sanPham == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.IDDanhMuc = new SelectList(db.DanhMucs, "ID", "TenDanhMuc", sanPham.IDDanhMuc);
+            return View(sanPham);
+        }
+        //Add Danh mục
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Add([Bind(Include = "TenDanhMuc")] DanhMuc danhMuc)
@@ -103,25 +118,10 @@ namespace coffeeMVC05.Areas.Admin.Controllers
 
             return View(danhMuc);
         }
-        public void CountCategory()
-        {
-            if (ModelState.IsValid)
-            {
-                int count = db.DanhMucs.Count();
-                ViewBag.Count = count;
-            }
-        }
-        public void CountProduct()
-        {
-            if (ModelState.IsValid)
-            {
-                int count = db.SanPhams.Count();
-                ViewBag.Count = count;
-            }
-        }
+        //Edit Danh mục
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include ="ID,TenDanhMuc")] DanhMuc danhMuc)
+        public ActionResult Edit([Bind(Include = "ID,TenDanhMuc")] DanhMuc danhMuc)
         {
             if (ModelState.IsValid)
             {
@@ -131,7 +131,18 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             }
             return View(danhMuc);
         }
-    
+        //Delete Danh mục
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            DanhMuc danhMuc = db.DanhMucs.Find(id);
+            db.DanhMucs.Remove(danhMuc);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //Add Product
         [HttpPost]
         public ActionResult AddProduct(SanPham ojbProduct, HttpPostedFileBase ImageUpload)
         {
@@ -139,20 +150,65 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             {
                 db.SanPhams.Add(ojbProduct);
                 if (ImageUpload != null)
-                    {
-                        string fileName = "";
-                        fileName = ImageUpload.FileName;
-                        //string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
-                        //string extension = Path.GetExtension(ImageUpload.FileName);
-                        //fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss") + extension);
-                        //fileName = (fileName + "." + extension);
-                        ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Areas/Admin/img/"), fileName));
-                        ojbProduct.Avatar = fileName;
-                        db.SaveChanges();
-                    }
+                {
+                    string fileName = "";
+                    fileName = ImageUpload.FileName;
+                    ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Areas/Admin/img/"), fileName));
+                    ojbProduct.Avatar = fileName;
+                    db.SaveChanges();
+                }
             }
             return RedirectToAction("Index");
         }
+
+        //Edit Product
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProduct(SanPham sanPham)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(sanPham).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.IDDanhMuc = new SelectList(db.DanhMucs, "ID", "TenDanhMuc", sanPham.IDDanhMuc);
+            return View(sanPham);
+        }
+
+        // Delete Product
+        [HttpPost, ActionName("DeleteProduct")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteProductConfirmed(int id)
+        {
+            SanPham sanPham = db.SanPhams.Find(id);
+            db.SanPhams.Remove(sanPham);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        //Tính số lượng danh mục hiện có
+        public void CountCategory()
+        {
+            if (ModelState.IsValid)
+            {
+                int count = db.DanhMucs.Count();
+                ViewBag.Count = count;
+            }
+        }
+
+        // Tính số lượng Product hiện có
+        public void CountProduct()
+        {
+            if (ModelState.IsValid)
+            {
+                int count = db.SanPhams.Count();
+                ViewBag.Count = count;
+            }
+        }
+       
+        
     }
     
 }

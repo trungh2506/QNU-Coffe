@@ -150,7 +150,7 @@
                             }
                         <td>
                             <a href="@Url.Action("EditProduct","Product",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
-                            <a href="#"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                            <a href="@Url.Action("DeleteProduct","Product",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
                         </td>
                     </tr>}
              
