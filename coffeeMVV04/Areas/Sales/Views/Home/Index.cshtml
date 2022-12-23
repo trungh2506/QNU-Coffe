@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Index sale";
+}
+
+
+<div class="TableBox">
+    <div class="mesBox"><h3>1.Chọn bàn</h3></div>
+    <div class="ListTable">
+        <a href="#" id="tb1" class="table">bàn 01</a>
+        <a href="#" id="tb2" class="table">bàn 01</a>
+        <a href="#" id="tb3" class="table">bàn 01</a>
+        <a href="#" id="tb4" class="table">bàn 01</a>
+        <a href="#" id="tb5" class="table reservation">bàn 01</a>
+        <a href="#" id="tb6" class="table">bàn 01</a>
+    </div>
+</div>
+
+<div class="menuBox">
+    <div class="mesBox"><h3>2.Chọn nuước uống</h3></div>
+    <div class="search">
+        <input type="text" />
+        <button class=" btn search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <ul class="category">
+        <li><a href="#menuCF">cà phê</a></li>
+        <li><a href="#menuTea">Trà</a></li>
+        <li><a href="#menuFJ">Nước trái cây</a></li>
+    </ul>
+    <div class="menu-area">
+        <ul id="menuCF" class="menu">
+            @{for (int i = 0; i < 6; i++)
+                {
+                    <li>
+                        <br />
+                        <img src="~/Areas/ImgProDuct/cfden01.jpg" width="50%" /><br />
+                        <span class="namePD">Cà phê đen</span><br />
+                        <span class="price">17,000 Đ</span>
+                        <a href="#" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
+
+                    </li>
+                }
+            }
+        </ul>
+        <ul id="menuTea" class="menu">
+            @{for (int i = 0; i < 6; i++)
+                {
+                    <li>
+
+                        <br />
+                        <img src="~/Areas/ImgProDuct/tea01.jpg" width="50%" /><br />
+                        <span class="namePD">Cà phê đen</span><br />
+                        <span class="price">17,000 Đ</span>
+                        <a href="#" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
+
+                    </li>
+                }
+            }
+        </ul>
+        <ul id="menuFJ" class="menu">
+            @{for (int i = 0; i < 6; i++)
+                {
+                    <li>
+
+                        <br />
+                        <img src="~/Areas/ImgProDuct/cfden01.jpg" width="50%" /><br />
+                        <span class="namePD">Nước ép trái cây</span><br />
+                        <span class="price">17,000 Đ</span>
+                        <a href="#" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
+
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="bill-area">
+    <div class="mesBox"><h3>3.Hoá đơn</h3></div>
+    <div class="list-menu">
+        <table>
+            <thead>
+                <tr>
+                    <th class="col1">Tên đồ uống</th>
+                    <th class="col2">số lượng</th>
+                    <th class="col3">giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>cafa den</td>
+                    <td>1</td>
+                    <td>17,000 Đ</td>
+                    <td><button style="color:red;outline:none;border:none;cursor:pointer"><i class="fa-solid fa-x"></i></button></td>
+                </tr>
+                <tr>
+                    <td>cafa den</td>
+                    <td>1</td>
+                    <td>17,000 Đ</td>
+                    <td><button style="color:red;outline:none;border:none;cursor:pointer"><i class="fa-solid fa-x"></i></button></td>
+                </tr>
+                <tr>
+                    <td>cafa den</td>
+                    <td>1</td>
+                    <td>17,000 Đ</td>
+                    <td><button style="color:red;outline:none;border:none;cursor:pointer"><i class="fa-solid fa-x"></i></button></td>
+                </tr>
+                <tr>
+                    <td>cafa den</td>
+                    <td>1</td>
+                    <td>17,000 Đ</td>
+                    <td><button style="color:red;outline:none;border:none;cursor:pointer"><i class="fa-solid fa-x"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="box">
+    <div>
+        <span>Bàn số: 1</span><br />
+        <span style="font-size:20px">Tổng tiền: 100,000</span>
+    </div>
+    <button class="btnTotal">Thành tiên</button>
+</div>
+

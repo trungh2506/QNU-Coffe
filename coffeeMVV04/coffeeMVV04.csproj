@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -127,6 +128,10 @@
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Sales\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Sales\Controllers\LogoutController.cs" />
+    <Compile Include="Areas\Sales\Controllers\ReserveController.cs" />
+    <Compile Include="Areas\Sales\Controllers\SettingController.cs" />
     <Compile Include="Areas\Sales\SalesAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,7 +149,12 @@
   <ItemGroup>
     <Content Include="Areas\Admin\img\admin001.jpg" />
     <Content Include="Areas\Admin\Script\JavaScript.js" />
+    <Content Include="Areas\ImgProDuct\cfden01.jpg" />
+    <Content Include="Areas\ImgProDuct\OIP.jpeg" />
+    <Content Include="Areas\ImgProDuct\tea01.jpg" />
+    <Content Include="Areas\Sales\script\JavaScript.js" />
     <Content Include="Areas\Style\styleAdmin.css" />
+    <Content Include="Areas\Style\styleSale.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -215,6 +225,12 @@
     <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Product\DeleteProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Product.cshtml" />
+    <Content Include="Areas\Sales\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Sales\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Sales\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Sales\Views\Logout\Index.cshtml" />
+    <Content Include="Areas\Sales\Views\Setting\Index.cshtml" />
+    <Content Include="Areas\Sales\Views\Reserve\Index.cshtml" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\jquery-3.6.1.min.js" />
@@ -246,9 +262,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Sales\Controllers\" />
     <Folder Include="Areas\Sales\Data\" />
-    <Folder Include="Areas\Sales\Views\Shared\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

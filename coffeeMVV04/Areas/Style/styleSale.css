@@ -1,0 +1,403 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+:root {
+    --Red: #390a0a;
+    --white: #ffffff;
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--Red);
+    border-left: 10px solid var(--Red);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+    .navigation.active {
+        width: 73px;
+    }
+
+    .navigation ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+        .navigation ul li {
+            position: relative;
+            width: 100%;
+            list-style: none;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+            .navigation ul li:hover, .navigation ul .hovered {
+                background: var(--white);
+            }
+
+            .navigation ul li:nth-child(1) {
+                margin-bottom: 40px;
+                pointer-events: none;
+            }
+
+            .navigation ul li a, .dropdown i {
+                position: relative;
+                display: block;
+                width: 100%;
+                display: flex;
+                text-decoration: none;
+                color: var(--white);
+            }
+
+        .navigation ul .hovered a,
+        .navigation ul .hovered .dropdown i {
+            color: var(--Red);
+        }
+
+        .navigation ul li:hover a,
+        .navigation ul li:hover .dropdown i {
+            color: var(--Red);
+        }
+
+        .navigation ul li a .icon {
+            position: relative;
+            display: block;
+            min-width: 60px;
+            height: 60px;
+            line-height: 70px;
+            text-align: center;
+        }
+
+    .navigation .dropdown {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        display: block;
+        min-width: 60px;
+        height: 60px;
+        line-height: 70px;
+        text-align: center;
+    }
+
+    .navigation ul li a .icon i,
+    .dropdown i {
+        font-size: 1.75em;
+    }
+
+    .navigation ul li a .title {
+        position: relative;
+        display: block;
+        padding: 0 10px;
+        line-height: 60px;
+        text-align: start;
+        white-space: nowrap;
+    }
+
+    .navigation ul li:hover a::before,
+    .navigation ul .hovered a::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: -50px;
+        width: 50px;
+        height: 50px;
+        background: transparent;
+        border-radius: 50%;
+        box-shadow: 35px 35px 0 10px var(--white);
+        pointer-events: none;
+    }
+
+    .navigation ul li:hover a::after,
+    .navigation ul .hovered a::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: -50px;
+        width: 50px;
+        height: 50px;
+        background: transparent;
+        border-radius: 50%;
+        box-shadow: 35px -35px 0 10px var(--white);
+        pointer-events: none;
+    }
+
+    .navigation ul li .sub-menu1,
+    .navigation ul li .sub-menu2,
+    .navigation ul li .sub-menu3 {
+        position: relative;
+        left: 10px;
+        width: 100%;
+        display: none;
+    }
+
+        .navigation ul li .sub-menu1 a,
+        .navigation ul li .sub-menu2 a,
+        .navigation ul li .sub-menu3 a {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .navigation ul li .sub-menu1.active,
+        .navigation ul li .sub-menu2.active,
+        .navigation ul li .sub-menu3.active
+        /*.navigation ul .hovered .sub-menu1,
+        .navigation ul .hovered .sub-menu2*/ {
+            display: block;
+        }
+
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+
+    .main.active {
+        width: calc(100% - 80px);
+        left: 80px;
+    }
+
+    .main .topbar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+        .main .topbar .toggle {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            cursor: pointer;
+        }
+
+.mesBox {
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #390a0a;
+    color: white;
+    padding: 10px;
+}
+
+.TableBox {
+    position: relative;
+    width: 55%;
+    padding: 20px;
+    box-shadow: 0 7px 25px rgb(0,0,0,0.08);
+    margin: 10px;
+}
+
+    .TableBox .ListTable {
+        position: relative;
+        cursor: pointer;
+    }
+
+.table {
+    position: relative;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.table {
+    background-color: forestgreen;
+}
+
+    .table.reservation {
+        background-color: darkblue;
+        cursor: no-drop;
+    }
+
+    .table.active {
+        background-color: #830000;
+    }
+
+.menuBox {
+    position: relative;
+    width: 55%;
+    padding: 20px;
+    box-shadow: 0 7px 25px rgb(0,0,0,0.08);
+    margin: 10px;
+}
+
+    .menuBox .search {
+        position: relative;
+    }
+
+        .menuBox .search input {
+            position: relative;
+            width: 85%;
+            padding: 10px;
+            border-radius: 20px;
+            outline-color: var(--Red);
+        }
+
+        .menuBox .search .btn.search {
+            position: relative;
+            width: 10%;
+            background-color: var(--Red);
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+.category {
+    position: relative;
+    margin-top: 20px;
+}
+
+    .category li {
+        position: relative;
+        display: inline;
+    }
+
+        .category li a {
+            position: relative;
+            padding: 10px;
+            background-color: darkgray;
+        }
+
+.menuBox .menu-area {
+    position: relative;
+    margin-top: 20px;
+    overflow: scroll;
+    height: 400px;
+}
+
+    .menuBox .menu-area .menu {
+        position: relative;
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 10px;
+    }
+
+        .menuBox .menu-area .menu li {
+            position: relative;
+            border: 1px solid var(--Red);
+            text-align: center;
+        }
+
+.btn-add {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    background-color: forestgreen;
+    color: white;
+    display: none;
+}
+
+.menuBox .menu-area .menu li:hover .btn-add {
+    display: block;
+}
+
+.menuBox .menu-area .menu li a {
+}
+
+.bill-area {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 42%;
+    padding: 20px;
+    box-shadow: 0 7px 25px rgb(0,0,0,0.08);
+    margin: 10px;
+}
+
+.list-menu {
+    height: 70vh;
+    overflow: scroll;
+}
+
+.bill-area table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .bill-area table th {
+        font-size: 18px;
+        color: var(--Red);
+        line-height: 1.4;
+        background-color: transparent;
+        box-shadow: 0 7px 25px rgb(0,0,0,0.08);
+    }
+
+    .bill-area table .col1 {
+        width: 40%;
+    }
+
+    .bill-area table .col2 {
+        width: 20%;
+    }
+
+    .bill-area table .col3 {
+        width: 40%;
+    }
+
+    .bill-area table tbody td {
+        padding: 20px;
+        border-bottom: 1px solid #f2f2f2;
+    }
+
+    .bill-area table tbody tr:hover {
+        background-color: aqua;
+    }
+
+.box {
+    width: 35%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px 40px 60px;
+    background-color: #470c51;
+    border-top-left-radius: 100px;
+    color: white;
+}
+
+.btnTotal {
+    width: 30%;
+    background-color: forestgreen;
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+    .btnTotal:hover {
+        width: 50%;
+        border: 0;
+    }
