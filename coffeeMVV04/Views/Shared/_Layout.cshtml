@@ -61,7 +61,11 @@
                                     <a href=""><i class="fa-regular fa-user"></i> @Session["HoTen"]</a>
                                     <ul class="sub">
                                         <li><a href="#">Profile</a></li>
-                                        <li><a href="#">Order</a></li>
+                                        @if (Session["Admin"].ToString() == "False")
+                                        {
+                                            <li>@Html.ActionLink("Order Page", "Index", "HomeSale", new { area = "Sales" }, null)</li>
+                                        }
+
                                         @if (Session["Admin"].ToString() == "True")
                                         {
                                             <li>@Html.ActionLink("Admin Page", "Index", "HomeAdmin", new { area = "Admin" }, null)</li>

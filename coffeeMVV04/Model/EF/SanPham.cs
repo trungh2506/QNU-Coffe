@@ -40,5 +40,10 @@ namespace coffeeMVV04.Model.EF
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
 
         public virtual DanhMuc DanhMuc { get; set; }
+
+        public static implicit operator SanPham(List<SanPham> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -25,7 +25,7 @@ li {
 
 .navigation {
     position: fixed;
-    width: 300px;
+    width: 73px;
     height: 100%;
     background: var(--Red);
     border-left: 10px solid var(--Red);
@@ -34,7 +34,7 @@ li {
 }
 
     .navigation.active {
-        width: 73px;
+        width: 300px;
     }
 
     .navigation ul {
@@ -61,7 +61,7 @@ li {
                 pointer-events: none;
             }
 
-            .navigation ul li a, .dropdown i {
+            .navigation ul li a {
                 position: relative;
                 display: block;
                 width: 100%;
@@ -70,13 +70,13 @@ li {
                 color: var(--white);
             }
 
-        .navigation ul .hovered a,
-        .navigation ul .hovered .dropdown i {
+        .navigation ul .hovered a
+        {
             color: var(--Red);
         }
 
-        .navigation ul li:hover a,
-        .navigation ul li:hover .dropdown i {
+        .navigation ul li:hover a
+        {
             color: var(--Red);
         }
 
@@ -89,19 +89,9 @@ li {
             text-align: center;
         }
 
-    .navigation .dropdown {
-        position: absolute;
-        top: 10px;
-        right: 0;
-        display: block;
-        min-width: 60px;
-        height: 60px;
-        line-height: 70px;
-        text-align: center;
-    }
 
-    .navigation ul li a .icon i,
-    .dropdown i {
+    .navigation ul li a .icon i
+    {
         font-size: 1.75em;
     }
 
@@ -142,41 +132,19 @@ li {
         pointer-events: none;
     }
 
-    .navigation ul li .sub-menu1,
-    .navigation ul li .sub-menu2,
-    .navigation ul li .sub-menu3 {
-        position: relative;
-        left: 10px;
-        width: 100%;
-        display: none;
-    }
-
-        .navigation ul li .sub-menu1 a,
-        .navigation ul li .sub-menu2 a,
-        .navigation ul li .sub-menu3 a {
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .navigation ul li .sub-menu1.active,
-        .navigation ul li .sub-menu2.active,
-        .navigation ul li .sub-menu3.active
-        /*.navigation ul .hovered .sub-menu1,
-        .navigation ul .hovered .sub-menu2*/ {
-            display: block;
-        }
 
 .main {
     position: absolute;
-    width: calc(100% - 300px);
-    left: 300px;
+    width: calc(100% - 80px);
+    left: 73px;
     min-height: 100vh;
     background: var(--white);
     transition: 0.5s;
 }
 
     .main.active {
-        width: calc(100% - 80px);
-        left: 80px;
+        width: calc(100% - 300px);
+        left: 300px;
     }
 
     .main .topbar {
@@ -226,9 +194,10 @@ li {
     padding: 10px;
     text-align: center;
     border-radius: 20px;
+    margin-right:10px;
 }
 
-.table {
+.table.a {
     background-color: forestgreen;
 }
 
@@ -354,18 +323,19 @@ li {
     }
 
     .bill-area table .col1 {
-        width: 40%;
+        width: 50%;
     }
 
     .bill-area table .col2 {
-        width: 20%;
+        width: 2%;
     }
 
     .bill-area table .col3 {
-        width: 40%;
+        width: 2%;
     }
 
     .bill-area table tbody td {
+        text-align:center;
         padding: 20px;
         border-bottom: 1px solid #f2f2f2;
     }

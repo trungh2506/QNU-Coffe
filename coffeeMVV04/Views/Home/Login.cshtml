@@ -10,16 +10,16 @@
             @using (Html.BeginForm("Login", "Home", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-            <div class="txt-field">
-                @Html.TextBoxFor(m => m.SDT, "")
-                <span></span>
-                <label for="">Số điện thoại</label>
-            </div>
-            <div class="txt-field">
-                @Html.TextBoxFor(m =>m.Password,"")
-                <span></span>
-                <label for="">Password</label>
-            </div>
+                <div class="txt-field">
+                    @Html.TextBoxFor(m => m.SDT, "")
+                    <span></span>
+                    <label for="">Số điện thoại</label>
+                </div>
+                <div class="txt-field">
+                    @Html.TextBoxFor(m => m.Password, "")
+                    <span></span>
+                    <label for="">Password</label>
+                </div>
                 <div class="pass">Quên mật khẩu?</div>
                 <input type="submit" value="Đăng nhập" />
                 <div class="register-link">

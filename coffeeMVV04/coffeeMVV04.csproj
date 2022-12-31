@@ -128,10 +128,11 @@
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
-    <Compile Include="Areas\Sales\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Sales\Controllers\HomeSaleController.cs" />
     <Compile Include="Areas\Sales\Controllers\LogoutController.cs" />
     <Compile Include="Areas\Sales\Controllers\ReserveController.cs" />
     <Compile Include="Areas\Sales\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Sales\model\Cards.cs" />
     <Compile Include="Areas\Sales\SalesAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,10 +228,10 @@
     <Content Include="Areas\Admin\Views\Product\Product.cshtml" />
     <Content Include="Areas\Sales\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Sales\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Sales\Views\Home\Index.cshtml" />
     <Content Include="Areas\Sales\Views\Logout\Index.cshtml" />
     <Content Include="Areas\Sales\Views\Setting\Index.cshtml" />
     <Content Include="Areas\Sales\Views\Reserve\Index.cshtml" />
+    <Content Include="Areas\Sales\Views\HomeSale\Index.cshtml" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\jquery-3.6.1.min.js" />
