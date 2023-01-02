@@ -21,7 +21,7 @@
         button:hover {
             background-color: green;
         }
-</style>A
+</style>
         @using (Html.BeginForm())
         {
             Html.AntiForgeryToken();
@@ -43,11 +43,10 @@
                         @Html.ValidationMessageFor(a => a.TenDanhMuc, null, new { @class = "text-danger" })
                     </div>
                 </div>
-                <button> Lưa </button>
+                <button> Lưu </button>
             </div>
-            }
-        } 
-}
+          
+         } 
   
     
 

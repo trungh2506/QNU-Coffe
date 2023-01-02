@@ -147,9 +147,6 @@
   <ItemGroup>
     <Content Include="Areas\Admin\img\admin001.jpg" />
     <Content Include="Areas\Admin\Script\JavaScript.js" />
-    <Content Include="Areas\ImgProDuct\cfden01.jpg" />
-    <Content Include="Areas\ImgProDuct\OIP.jpeg" />
-    <Content Include="Areas\ImgProDuct\tea01.jpg" />
     <Content Include="Areas\Sales\script\JavaScript.js" />
     <Content Include="Areas\Style\styleAdmin.css" />
     <Content Include="Areas\Style\styleSale.css" />
