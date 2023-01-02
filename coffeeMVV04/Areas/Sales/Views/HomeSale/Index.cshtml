@@ -9,126 +9,129 @@
     }
 }
 
-
-<div class="TableBox">
-    <div class="mesBox"><h3>1. Chọn bàn</h3></div>
-    <div class="ListTable">
-        @for (int i = 0; i <= 7; i++)
-        {       
-          @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i + 1 }, new { @class = "table a", @style = "font-size: 20px; font-weight: bold" })
-        }
-
-    </div>
-</div>
-
-<div class="menuBox">
-    <div class="mesBox"><h3>2. Chọn nước uống</h3></div>
-    <div class="search">
-        <input type="text" />
-        <button class=" btn search"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </div>
-    <ul class="category">
-        @foreach (DanhMuc item in Model.DanhMuc)
-        {
-            <li><a style="background-color: #390A0A; font-size: 20px; color: white" href="#@item.ID">@item.TenDanhMuc</a></li>
-        }
-    </ul>
-    <div class="menu-area">
-        @foreach (DanhMuc dm in Model.DanhMuc)
-        {
-            <ul id="@dm.ID" class="menu">
-            @foreach (SanPham sp in Model.Sanpham)
-             {
-                if (sp.IDDanhMuc == dm.ID)
-                {
-                    <li>
-                        <img src="~/Areas/Admin/img/@sp.Avatar" width="50%" /><br />
-                        <span class="namePD">@sp.TenSP</span><br />
-                        <span style="font-weight: bold" class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
-                        @if (strTB != "")
-                        {
-                            @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
-                            <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID,})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
-                        }
-                    </li>
-                }
-
-             }
-            </ul>
-        }
-    </div>
-</div>
-
-<div class="bill-area">
-    <div class="mesBox"><h3>3. Hoá đơn</h3></div>
-    <div class="list-menu">
-
-        @{if (strTB != "")
+@using (Html.BeginForm("CheckOut", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="TableBox">
+        <div class="mesBox"><h3>1. Chọn bàn</h3></div>
+        <div class="ListTable">
+            @for (int i = 0; i <= 7; i++)
             {
-                <h2 style="color: forestgreen; font-weight: bold; text-align:center; padding-bottom: 20px">Bàn @(strTB.AsInt())</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="col2">STT</th>
-                            <th class="col1">Tên</th>
-                            <th class="col2">Số lượng</th>
-                            <th class="col3">Đơn giá</th>
-                            <th class="col3">Tổng</th>
-                            <th class="col2"></th>
-                            <th class="col2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{ if (Session[strTB] != null)
-                            {
-                                var card = Session[strTB] as coffeeMVV04.Areas.Sales.model.Cards;
-                                for (int i = 0; i <= card.product.Count - 1; i++)
+                @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i + 1 }, new { @class = "table a", @style = "font-size: 20px; font-weight: bold" })
+            }
+
+        </div>
+    </div>
+
+    <div class="menuBox">
+        <div class="mesBox"><h3>2. Chọn nước uống</h3></div>
+        <div class="search">
+            <input type="text" />
+            <button class=" btn search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <ul class="category">
+            @foreach (DanhMuc item in Model.DanhMuc)
+            {
+                <li><a style="background-color: #390A0A; font-size: 20px; color: white" href="#@item.ID">@item.TenDanhMuc</a></li>
+            }
+        </ul>
+        <div class="menu-area">
+            @foreach (DanhMuc dm in Model.DanhMuc)
+            {
+                <ul id="@dm.ID" class="menu">
+                    @foreach (SanPham sp in Model.Sanpham)
+                    {
+                        if (sp.IDDanhMuc == dm.ID)
+                        {
+                            <li>
+                                <img src="~/Areas/Admin/img/@sp.Avatar" width="50%" /><br />
+                                <span class="namePD">@sp.TenSP</span><br />
+                                <span style="font-weight: bold" class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
+                                @if (strTB != "")
                                 {
-                                                <tr>
-                                                    <td>@(i+1)</td>
-                                                    <td>@card.product[i].TenSP</td>
-                                                    <td>@card.product[i].SoLuong</td>
-                                                    <td>@String.Format("{0:#,##0}", card.product[i].GiaSP)</td>
-                                                    <td>@String.Format("{0:#,##0}", (card.product[i].GiaSP * card.product[i].SoLuong))</td>
-                                                    <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Minus","HomeSale",new { NumTB = strTB.AsInt(), id = card.product[i].ID})"><i class="fa-solid fa-minus"></i></a></td>
-                                                    <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Remove","HomeSale",new { NumTB = strTB.AsInt(), id = card.product[i].ID})"><i class="fa-solid fa-x"></i></a></td>
-                                                </tr>
+                                    @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
+                                    <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID,})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
+                                }
+                            </li>
+                        }
+
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+
+    <div class="bill-area">
+        <div class="mesBox"><h3>3. Hoá đơn</h3></div>
+        <div class="list-menu">
+
+            @{if (strTB != "")
+                {
+                    <h2 style="color: forestgreen; font-weight: bold; text-align:center; padding-bottom: 20px">Bàn @(strTB.AsInt())</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="col2">STT</th>
+                                <th class="col1">Tên</th>
+                                <th class="col2">Số lượng</th>
+                                <th class="col3">Đơn giá</th>
+                                <th class="col3">Tổng</th>
+                                <th class="col2"></th>
+                                <th class="col2"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ if (Session[strTB] != null)
+                                {
+                                    var cart = Session[strTB] as coffeeMVV04.Areas.Sales.model.Carts;
+                                    for (int i = 0; i <= cart.product.Count - 1; i++)
+                                    {
+                                        <tr>
+                                            <td>@(i+1)</td>
+                                            <td>@cart.product[i].TenSP</td>
+                                            <td>@cart.product[i].SoLuong</td>
+                                            <td>@String.Format("{0:#,##0}", cart.product[i].GiaSP)</td>
+                                            <td>@String.Format("{0:#,##0}", (cart.product[i].GiaSP * cart.product[i].SoLuong))</td>
+                                            <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Minus","HomeSale",new { NumTB = strTB.AsInt(), id = cart.product[i].ID})"><i class="fa-solid fa-minus"></i></a></td>
+                                            <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Remove","HomeSale",new { NumTB = strTB.AsInt(), id = cart.product[i].ID})"><i class="fa-solid fa-x"></i></a></td>
+                                        </tr>
+                                    }
                                 }
                             }
-                        }
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
+                }
+                else
+                {
+                    <div>
+                        <span style="color:red">Chọn bàn trước</span>
+                    </div>
+
+                }
             }
-            else
-            {
-                <div>
-                    <span style="color:red">Chọn bàn trước</span>
-                </div>
-
-            }
-        }
+        </div>
     </div>
-</div>
-<div class="box">
-    <div>
-        @{ if (Session[strTB] != null)
-            {
-                var card = Session[strTB] as coffeeMVV04.Areas.Sales.model.Cards;
-                <span>Bàn số: @(strTB.AsInt()) </span><br />
-                <span style="font-size:30px; font-weight: 500">Tổng tiền: @String.Format("{0:#,##0} VND", card.Total())</span>
 
+    <div class="box">
+        <div>
+            @{ if (Session[strTB] != null)
+                {
+                    var cart = Session[strTB] as coffeeMVV04.Areas.Sales.model.Carts;
+                    <span>Bàn số: @(strTB.AsInt()) </span><br />
+                    <span style="font-size:30px; font-weight: 500" name="Total">Tổng tiền: @String.Format("{0:#,##0} VND", cart.Total())</span>
+                    <input type="number" name="Total" value="@cart.Total()"/>
+                }
+                else
+                {
+                    <span>Bàn số: Chưa chọn bàn </span><br />
+                    <span style="font-size:30px; font-weight: 500">Tổng tiền: 0 VND</span>
+                }
             }
-            else
-            {
-                <span>Bàn số: Chưa chọn bàn </span><br />
-                <span style="font-size:30px; font-weight: 500">Tổng tiền: 0 VND</span>
-            }
-        }
+        </div>
+        <input type="submit" class="btnTotal"  style="font-size: 20px; font-weight:bold" value="Thanh toán" />
     </div>
-    <button class="btnTotal" style="font-size: 20px">@Html.ActionLink("Thanh toán", "Add", "Order", new { @style = "color: white"})</button>
-</div>
+}
 
 
 

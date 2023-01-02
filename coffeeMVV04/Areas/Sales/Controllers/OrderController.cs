@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using coffeeMVV04.Areas.Sales.model;
 
 namespace coffeeMVV04.Areas.Sales.Controllers
 {
@@ -18,14 +19,46 @@ namespace coffeeMVV04.Areas.Sales.Controllers
         {
             return View(db.HoaDons.ToList());
         }
-        //Checkout
-        public ActionResult Checkout(FormCollection form)
-        {
-            try
-            {
 
+
+        //Checkout
+        [HttpGet]
+        public ActionResult CheckOut()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CheckOut(FormCollection form)
+        {
+            //kiểm tra Session["UserID"]
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Home", new { area = "" });
             }
-            return View(form);
+            else {
+                //Thêm vào bảng Hóa Đơn
+                Carts cart = Session["srtTB"] as Carts;
+                HoaDon hoaDon = new HoaDon();
+                hoaDon.Date = DateTime.Now;
+                hoaDon.TrangThai = true;
+                hoaDon.TongCong = Double.Parse(form["Total"].ToString());
+                hoaDon.IDUser = Int32.Parse(Session["UserID"].ToString());
+                db.HoaDons.Add(hoaDon);
+
+                //Thêm vào bảng CTHD
+                foreach (var item in cart.product)
+                {
+                    ChiTietHoaDon cthd = new ChiTietHoaDon()
+                    {
+                        IDHoaDon = hoaDon.ID,
+                        IDSanPham = item.ID,
+                        SoLuong = item.SoLuong
+                    };
+                    db.ChiTietHoaDons.Add(cthd);
+                }
+                db.SaveChanges();
+                return RedirectToAction("CheckOut");
+            }
         }
        
 

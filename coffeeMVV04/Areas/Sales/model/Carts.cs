@@ -41,14 +41,18 @@ namespace coffeeMVV04.Areas.Sales.model
         }
 
         public int numTable { get => NumTable; set => NumTable = value; }
-        public List<SanPham> product { get => Product; set => Product = value; }
+        public List<SanPham> product 
+        { 
+            get => Product; 
+            set => Product = value; 
+        }
 
-        public int Total()
+        public double Total()
         {
-            int total = 0;
+            double total = 0;
             for (int i = 0; i < Product.Count(); i++)
             {
-                total += (int)(Product[i].GiaSP* Product[i].SoLuong);
+                total += (double)(Product[i].GiaSP* Product[i].SoLuong);
             }
             return total;
         }
