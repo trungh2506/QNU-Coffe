@@ -37,15 +37,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index","Home")">
+                    <a href="@Url.Action("Index","Home", new { area = "" }, null)">
                         <span class="icon"><i class="fa-solid fa-arrow-rotate-left"></i></span>
                         <span class="title">Trở về</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index","Logout")">
-                        <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
-                        <span class="title">Logout</span>
                     </a>
                 </li>
             </ul>

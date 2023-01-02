@@ -34,6 +34,7 @@ namespace coffeeMVV04.Areas.Sales.model
             int index = Product.Select(T => T.ID).ToList().IndexOf(pd.ID);
             Product.RemoveAt(index);
         }
+
         public int getCounlist()
         {
             return product.Count;

@@ -22,23 +22,53 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             model.Sanpham = db.SanPhams.ToList();
             return View(model);
         }
-        public ActionResult Remove(int numTB,int id)
+        public ActionResult Remove(int numTB, int id)
         {
             string strTb = numTB.ToString();
-            //lấy sanr phẩm từ session vào card
+            //lấy sản phẩm từ session vào card
             Cards cards = (Cards)Session[strTb];
-            SanPham sanphan = new SanPham();
+            SanPham sanpham = new SanPham();
 
             //tìm sản phẩm cần xóa 
-            sanphan = laySanpham(id);
+            sanpham = laySanpham(id);
 
             //xóa sản phẩm trong card
-            cards.RemoveItem(sanphan);
+            cards.RemoveItem(sanpham);
 
             //update session
             Session[strTb] = cards;
             return RedirectToAction("Index", new { numTB =  numTB});
+        }
+        public ActionResult Minus(int numTB, int id)
+        {
+            string strTb = numTB.ToString();
 
+            //lấy sản phẩm từ session vào card
+            Cards cards = (Cards)Session[strTb];
+            SanPham sanpham = new SanPham();
+
+            //tìm sản phẩm cần giảm
+            sanpham = laySanpham(id);
+
+            int tmp = 0;
+            for (int i = 0; i < cards.product.Count; i++)
+            {
+                if (cards.product[i].SoLuong == 1)
+                {
+                    cards.RemoveItem(sanpham);
+                    Session[strTb] = cards;
+                }
+                else if (cards.product[i].ID == id)
+                {
+                    // giảm số lượng đi 1
+                    cards.product[i].SoLuong -= 1;
+                    // cập nhật session của card
+                    Session[strTb] = cards;
+                }
+               
+            }
+
+            return RedirectToAction("Index", new { numTB = numTB });
         }
 
         /// Thêm sản phẩm vào cart

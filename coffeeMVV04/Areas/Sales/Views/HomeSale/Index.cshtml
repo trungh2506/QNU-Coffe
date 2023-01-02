@@ -16,7 +16,7 @@
     <div class="ListTable">
         @for (int i = 0; i <= 7; i++)
         {
-            @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i }, new { @class = "table a" })
+            @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i+1 }, new { @class = "table a" })
         }
     </div>
 </div>
@@ -65,7 +65,7 @@
 
         @{if (strTB != "")
             {
-                <h2 style="color: forestgreen; font-weight: bold;">bàn @(strTB.AsInt()+1)</h2>
+                <h2 style="color: forestgreen; font-weight: bold;">Bàn @(strTB.AsInt())</h2>
                 <table>
                     <thead>
                         <tr>
@@ -75,7 +75,7 @@
                             <th class="col3">Giá</th>
                             <th class="col3">Tính tiền</th>
                             <th class="col2"></th>
-
+                            <th class="col2"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,14 +84,15 @@
                                 var card = Session[strTB] as coffeeMVV04.Areas.Sales.model.Cards;
                                 for (int i = card.product.Count - 1; i >= 0; i--)
                                 {
-                                    <tr>
-                                        <td>@(i+1)</td>
-                                        <td>@card.product[i].TenSP</td>
-                                        <td>@card.product[i].SoLuong</td>
-                                        <td>@String.Format("{0:#,##0}", card.product[i].GiaSP)</td>
-                                        <td>@String.Format("{0:#,##0}", (card.product[i].GiaSP * card.product[i].SoLuong))</td>
-                                        <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Remove","HomeSale",new { NumTB = strTB.AsInt(), id = card.product[i].ID})"><i class="fa-solid fa-x"></i></a></td>
-                                    </tr>
+                                                <tr>
+                                                    <td>@(i+1)</td>
+                                                    <td>@card.product[i].TenSP</td>
+                                                    <td>@card.product[i].SoLuong</td>
+                                                    <td>@String.Format("{0:#,##0}", card.product[i].GiaSP)</td>
+                                                    <td>@String.Format("{0:#,##0}", (card.product[i].GiaSP * card.product[i].SoLuong))</td>
+                                                    <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Minus","HomeSale",new { NumTB = strTB.AsInt(), id = card.product[i].ID})"><i class="fa-solid fa-minus"></i></a></td>
+                                                    <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Remove","HomeSale",new { NumTB = strTB.AsInt(), id = card.product[i].ID})"><i class="fa-solid fa-x"></i></a></td>
+                                                </tr>
 
                                 }
 
