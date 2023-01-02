@@ -368,6 +368,6 @@ li {
 }
 
     .btnTotal:hover {
-        width: 50%;
-        border: 0;
+        color: forestgreen;
+        background-color: white;
     }

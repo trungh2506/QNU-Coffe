@@ -53,7 +53,7 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             int tmp = 0;
             for (int i = 0; i < cards.product.Count; i++)
             {
-                if (cards.product[i].SoLuong == 1)
+                if (cards.product[i].SoLuong <= 1)
                 {
                     cards.RemoveItem(sanpham);
                     Session[strTb] = cards;
