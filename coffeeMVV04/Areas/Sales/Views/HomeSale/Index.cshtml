@@ -5,7 +5,6 @@
     string strTB = "";
     if (Request.Params["NumTB"] != null)
     {
-
         strTB = Request.Params["NumTB"];
     }
 }
@@ -15,8 +14,8 @@
     <div class="mesBox"><h3>1. Chọn bàn</h3></div>
     <div class="ListTable">
         @for (int i = 0; i <= 7; i++)
-        {
-                @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i + 1 }, new { @class = "table a" })
+        {       
+          @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i + 1 }, new { @class = "table a", @style = "font-size: 20px; font-weight: bold" })
         }
 
     </div>
@@ -45,7 +44,7 @@
                     <li>
                         <img src="~/Areas/Admin/img/@sp.Avatar" width="50%" /><br />
                         <span class="namePD">@sp.TenSP</span><br />
-                        <span class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
+                        <span style="font-weight: bold" class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
                         @if (strTB != "")
                         {
                             @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
@@ -66,15 +65,15 @@
 
         @{if (strTB != "")
             {
-                <h2 style="color: forestgreen; font-weight: bold; text-align:center">Bàn @(strTB.AsInt())</h2>
+                <h2 style="color: forestgreen; font-weight: bold; text-align:center; padding-bottom: 20px">Bàn @(strTB.AsInt())</h2>
                 <table>
                     <thead>
                         <tr>
                             <th class="col2">STT</th>
                             <th class="col1">Tên</th>
-                            <th class="col2">SL</th>
-                            <th class="col3">Giá</th>
-                            <th class="col3">Tính tiền</th>
+                            <th class="col2">Số lượng</th>
+                            <th class="col3">Đơn giá</th>
+                            <th class="col3">Tổng</th>
                             <th class="col2"></th>
                             <th class="col2"></th>
                         </tr>
@@ -94,10 +93,7 @@
                                                     <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Minus","HomeSale",new { NumTB = strTB.AsInt(), id = card.product[i].ID})"><i class="fa-solid fa-minus"></i></a></td>
                                                     <td><a style="color:red;outline:none;border:none;cursor:pointer" href="@Url.Action("Remove","HomeSale",new { NumTB = strTB.AsInt(), id = card.product[i].ID})"><i class="fa-solid fa-x"></i></a></td>
                                                 </tr>
-
                                 }
-
-
                             }
                         }
 
@@ -120,7 +116,7 @@
         @{ if (Session[strTB] != null)
             {
                 var card = Session[strTB] as coffeeMVV04.Areas.Sales.model.Cards;
-                <span>Bàn số: @(strTB.AsInt()+1) </span><br />
+                <span>Bàn số: @(strTB.AsInt()) </span><br />
                 <span style="font-size:30px; font-weight: 500">Tổng tiền: @String.Format("{0:#,##0} VND", card.Total())</span>
             }
             else
