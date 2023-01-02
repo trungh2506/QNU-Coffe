@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<coffeeMVV04.Model.EF.HoaDon>
+
 @{
     ViewBag.Title = "Dasboard page";
 }
@@ -43,35 +44,44 @@
         <table>
             <thead>
                 <tr>
+                    <td>ID hóa đơn</td>
+                    <td>Tên Nhân viên</td>
                     <td>Thời gian</td>
-                    <td>Tên</td>
-                    <td>Giá</td>
-                    <td>Bàn số</td>
+                    <td>Tổng cộng</td>
                     <td>Status</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>@DateTime.Now.ToString()</td>
-                    <td>Cafe sửa size M</td>
-                    <td>18,000 đ</td>
-                    <td>7</td>
-                    <td><span class="status online">đang ngồi</span></td>
-                </tr>
-                <tr>
-                    <td>@DateTime.Now.ToString()</td>
-                    <td>Cafe sửa size M</td>
-                    <td>18,000 đ</td>
-                    <td>7</td>
-                    <td><span class="status pay">đã trả tiền</span></td>
-                </tr>
-                <tr>
-                    <td>@DateTime.Now.ToString()</td>
-                    <td>Cafe sửa size M</td>
-                    <td>18,000 đ</td>
-                    <td>7</td>
-                    <td><span class="status owe">nợ</span></td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NguoiDung.HoTen)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TongCong)
+                        </td>
+                       
+                        @if (item.TrangThai.ToString() == "True")
+                        {
+                            <td><span class="status online">Đã thanh toán</span></td>
+                        }
+                        else
+                        {
+                            <td><span class="status owe">Chưa thanh toán</span></td>
+                        }
+                       @* <td>
+                            <a href="@Url.Action("EditProduct","Product",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                            <a href="@Url.Action("DeleteProduct","Product",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                        </td>*@
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

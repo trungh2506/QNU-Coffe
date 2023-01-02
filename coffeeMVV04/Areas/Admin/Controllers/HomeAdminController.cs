@@ -11,11 +11,11 @@ namespace coffeeMVC05.Areas.Admin.Controllers
 
     public class HomeAdminController : Controller
     {
-        Model1 Model1 = new Model1();
+        Model1 db = new Model1();
         // GET: Admin/HomeAdmin
         public ActionResult Index()
         {
-            return View();
+            return View(db.HoaDons.ToList());
         }
     }
 }

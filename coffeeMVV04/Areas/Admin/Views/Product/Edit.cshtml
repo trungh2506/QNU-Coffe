@@ -22,9 +22,10 @@
             background-color: green;
         }
 </style>
-        @using (Html.BeginForm())
+
+        @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { }))
         {
-            Html.AntiForgeryToken();
+            @Html.AntiForgeryToken();
             <div class="details" style="margin:0 auto;width:70%">
                 <div class="recentMenu">
                     <div class="cardHeader">

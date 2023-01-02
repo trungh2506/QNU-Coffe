@@ -37,6 +37,7 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         {
             return View();
         }
+
         // Đổ dữ liệu từ bảng vào form Edit (EditDanh mục)
         public ActionResult Edit(int? id)
         {
@@ -51,6 +52,7 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             }
             return View(danhMuc);
         }
+
         //Lấy dữ liệu từ bảng đổ vào from detetedanhmuc
         public ActionResult Delete(int? id)
         {
