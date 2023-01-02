@@ -6,16 +6,16 @@ using System.Web;
 
 namespace coffeeMVV04.Areas.Sales.model
 {
-    public class Cards
+    public class Carts
     {
         private int NumTable;
         private List<SanPham> Product = new List<SanPham>();
-        public Cards()
+        public Carts()
         {
 
 
         }
-        public void addNewCard(int ntb,SanPham pd)
+        public void addNewCart(int ntb,SanPham pd)
         {
             this.NumTable = ntb;
             this.Product.Add(new SanPham { ID = pd.ID, TenSP = pd.TenSP, SoLuong = 1, GiaSP = pd.GiaSP, GiamGiaSP = pd.GiamGiaSP, IDDanhMuc = pd.IDDanhMuc });

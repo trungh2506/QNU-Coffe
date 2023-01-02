@@ -25,45 +25,45 @@ namespace coffeeMVV04.Areas.Sales.Controllers
         public ActionResult Remove(int numTB, int id)
         {
             string strTb = numTB.ToString();
-            //lấy sản phẩm từ session vào card
-            Cards cards = (Cards)Session[strTb];
+            //lấy sản phẩm từ session vào cart
+            Carts carts = (Carts)Session[strTb];
             SanPham sanpham = new SanPham();
 
             //tìm sản phẩm cần xóa 
             sanpham = laySanpham(id);
 
-            //xóa sản phẩm trong card
-            cards.RemoveItem(sanpham);
+            //xóa sản phẩm trong cart
+            carts.RemoveItem(sanpham);
 
             //update session
-            Session[strTb] = cards;
+            Session[strTb] = carts;
             return RedirectToAction("Index", new { numTB =  numTB});
         }
         public ActionResult Minus(int numTB, int id)
         {
             string strTb = numTB.ToString();
 
-            //lấy sản phẩm từ session vào card
-            Cards cards = (Cards)Session[strTb];
+            //lấy sản phẩm từ session vào cart
+            Carts carts = (Carts)Session[strTb];
             SanPham sanpham = new SanPham();
 
             //tìm sản phẩm cần giảm
             sanpham = laySanpham(id);
 
             int tmp = 0;
-            for (int i = 0; i < cards.product.Count; i++)
+            for (int i = 0; i < carts.product.Count; i++)
             {
-                if (cards.product[i].ID == id && cards.product[i].SoLuong == 1)
+                if (carts.product[i].ID == id && carts.product[i].SoLuong == 1)
                 {
-                    cards.RemoveItem(sanpham);
-                    Session[strTb] = cards;
+                    carts.RemoveItem(sanpham);
+                    Session[strTb] = carts;
                 }
-                else if (cards.product[i].ID == id)
+                else if (carts.product[i].ID == id)
                 {
                     // giảm số lượng đi 1
-                    cards.product[i].SoLuong -= 1;
+                    carts.product[i].SoLuong -= 1;
                     // cập nhật session của card
-                    Session[strTb] = cards;
+                    Session[strTb] = carts;
                     break;
                 }
                
@@ -76,26 +76,26 @@ namespace coffeeMVV04.Areas.Sales.Controllers
         public ActionResult addToCart(int numTB, int id)
         {
             string strTb = numTB.ToString();
-            Cards cards = (Cards)Session[strTb];
+            Carts carts = (Carts)Session[strTb];
             SanPham sanpham = new SanPham();
-            if (cards == null)
+            if (carts == null)
             {
-                cards = new Cards();
+                carts = new Carts();
                 
                 sanpham = laySanpham(id);
-                cards.addNewCard(numTB, sanpham);
-                Session[strTb] = cards;
+                carts.addNewCart(numTB, sanpham);
+                Session[strTb] = carts;
             }
             else
             {
                 int tmp = 0;
-                for(int i = 0; i < cards.product.Count; i++)
+                for(int i = 0; i < carts.product.Count; i++)
                 {
-                    if(cards.product[i].ID == id)
+                    if(carts.product[i].ID == id)
                     {
-                        cards.product[i].SoLuong += 1;
+                        carts.product[i].SoLuong += 1;
                         tmp++;
-                        Session[strTb] = cards;
+                        Session[strTb] = carts;
                         break;
                     }
                     
@@ -104,11 +104,11 @@ namespace coffeeMVV04.Areas.Sales.Controllers
                 if(tmp == 0)
                 {
                     sanpham = laySanpham(id);
-                    cards.addItem(sanpham);
-                    Session[strTb] = cards;
+                    carts.addItem(sanpham);
+                    Session[strTb] = carts;
                 }
             }
-            return RedirectToAction("Index", new { numTB = numTB });
+            return RedirectToAction("Index", new { numTB = numTB, id = sanpham.ID});
 
         }
         public SanPham laySanpham(int id)
@@ -125,6 +125,7 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             return tmp;
         }
 
+       
 
 
     }

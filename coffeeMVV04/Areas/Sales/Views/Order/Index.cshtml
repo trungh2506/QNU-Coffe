@@ -1,0 +1,87 @@
+﻿@model IEnumerable<coffeeMVV04.Model.EF.HoaDon>
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Areas/Sales/Views/Shared/_Layout.cshtml";
+}
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers">56 ly</div>
+            <div class="cardName">đã bán hôm nay</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-mug-saucer"></i>
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <div class="numbers">1,665,000 đ</div>
+            <div class="cardName">Số tiền Hôm nay</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-money-bill-1-wave"></i>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">1,665,000 đ</div>
+            <div class="cardName">Số tiền tất cả</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-money-bill-1-wave"></i>
+        </div>
+    </div>
+</div>
+
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Đơn hàng</h2>
+            <a href="#" class="btn">Xem Tất cả</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID hóa đơn</td>
+                    <td>Tên Nhân viên</td>
+                    <td>Thời gian</td>
+                    <td>Tổng cộng</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NguoiDung.HoTen)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TongCong)
+                        </td>
+
+                        @if (item.TrangThai.ToString() == "True")
+                        {
+                            <td><span class="status online">Đã thanh toán</span></td>
+                        }
+                        else
+                        {
+                            <td><span class="status owe">Chưa thanh toán</span></td>
+                        }
+                        @* <td>
+                                <a href="@Url.Action("EditProduct","Product",new {id=item.ID })"><i class="fa-solid fa-pen-to-square"></i><span>sửa</span></a>
+                                <a href="@Url.Action("DeleteProduct","Product",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>xóa</span></a>
+                            </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

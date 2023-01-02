@@ -48,7 +48,7 @@
                         @if (strTB != "")
                         {
                             @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
-                            <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
+                            <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID,})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
                         }
                     </li>
                 }
@@ -118,6 +118,7 @@
                 var card = Session[strTB] as coffeeMVV04.Areas.Sales.model.Cards;
                 <span>Bàn số: @(strTB.AsInt()) </span><br />
                 <span style="font-size:30px; font-weight: 500">Tổng tiền: @String.Format("{0:#,##0} VND", card.Total())</span>
+
             }
             else
             {
@@ -125,9 +126,8 @@
                 <span style="font-size:30px; font-weight: 500">Tổng tiền: 0 VND</span>
             }
         }
-
     </div>
-    <button class="btnTotal" style="font-size: 20px">Thanh Toán</button>
+    <button class="btnTotal" style="font-size: 20px">@Html.ActionLink("Thanh toán", "Add", "Order", new { @style = "color: white"})</button>
 </div>
 
 
