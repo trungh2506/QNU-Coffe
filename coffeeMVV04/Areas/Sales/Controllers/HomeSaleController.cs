@@ -46,15 +46,14 @@ namespace coffeeMVV04.Areas.Sales.Controllers
         {
             string strTb = numTB.ToString();
             Cards cards = (Cards)Session[strTb];
-            SanPham sanphan = new SanPham();
+            SanPham sanpham = new SanPham();
             if (cards == null)
             {
                 cards = new Cards();
                 
-                sanphan = laySanpham(id);
-                cards.addNewCard(numTB, sanphan);
+                sanpham = laySanpham(id);
+                cards.addNewCard(numTB, sanpham);
                 Session[strTb] = cards;
-
             }
             else
             {
@@ -73,8 +72,8 @@ namespace coffeeMVV04.Areas.Sales.Controllers
                 }
                 if(tmp == 0)
                 {
-                    sanphan = laySanpham(id);
-                    cards.addItem(sanphan);
+                    sanpham = laySanpham(id);
+                    cards.addItem(sanpham);
                     Session[strTb] = cards;
                 }
             }

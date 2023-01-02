@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - cofee</title>
+    <title>@ViewBag.Title | QNU Coffee</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
     <link href="~/Areas/Style/styleSale.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
@@ -15,7 +15,7 @@
                 <li>
                     <a href="#">
                         <span class="icon"><i class="fa-sharp fa-solid fa-user-nurse"></i></span>
-                        <span class="title">soulixai</span>
+                        <span class="title">@Session["HoTen"]</span>
                     </a>
                 </li>
                 <li>
@@ -26,7 +26,7 @@
                 </li>
                 <li>
                     <a href="@Url.Action("Index","Reserve")">
-                        <span class="icon"><i class="fa-sharp fa-solid fa-house"></i></span>
+                        <span class="icon"><i class="fa-solid fa-mug-saucer"></i></i></span>
                         <span class="title">Đặt bàn</span>
                     </a>
                 </li>

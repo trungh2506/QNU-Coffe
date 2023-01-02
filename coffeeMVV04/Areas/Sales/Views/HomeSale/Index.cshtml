@@ -16,13 +16,13 @@
     <div class="ListTable">
         @for (int i = 0; i <= 7; i++)
         {
-            @Html.ActionLink("bàn " + (i + 01), "Index", new { NumTB = i }, new { @class = "table a" })
+            @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i }, new { @class = "table a" })
         }
     </div>
 </div>
 
 <div class="menuBox">
-    <div class="mesBox"><h3>2.Chọn nuước uống</h3></div>
+    <div class="mesBox"><h3>2.Chọn nước uống</h3></div>
     <div class="search">
         <input type="text" />
         <button class=" btn search"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -41,16 +41,16 @@
                 {
                     if (sp.IDDanhMuc == dm.ID)
                     {
-                        <li>
-                            <img src="~/Areas/ImgProDuct/@sp.Avatar" width="50%" /><br />
-                            <span class="namePD">@sp.TenSP</span><br />
-                            <span class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
-                            @if (strTB != "")
-                            {
-                                @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
-                                <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
-                            }
-                        </li>
+                <li>
+                    <img src="~/Areas/Admin/img/@sp.Avatar" width="50%" /><br />
+                    <span class="namePD">@sp.TenSP</span><br />
+                    <span class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
+                    @if (strTB != "")
+                    {
+                        @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
+                        <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
+                    }
+                </li>
                     }
                 }
             </ul>
@@ -69,10 +69,10 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="col2">stt</th>
+                            <th class="col2">STT</th>
                             <th class="col1">Tên</th>
                             <th class="col2">SL</th>
-                            <th class="col3">giá</th>
+                            <th class="col3">Giá</th>
                             <th class="col3">Tính tiền</th>
                             <th class="col2"></th>
 

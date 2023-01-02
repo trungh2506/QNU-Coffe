@@ -8,7 +8,7 @@ namespace coffeeMVV04.Model.EF
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=QNU_CoffeeEntities")
+            : base("name=Model13")
         {
         }
 
@@ -17,6 +17,7 @@ namespace coffeeMVV04.Model.EF
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
