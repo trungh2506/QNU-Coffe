@@ -38,24 +38,24 @@
         @foreach (DanhMuc dm in Model.DanhMuc)
         {
             <ul id="@dm.ID" class="menu">
-                @foreach (SanPham sp in Model.Sanpham)
+            @foreach (SanPham sp in Model.Sanpham)
+             {
+                if (sp.IDDanhMuc == dm.ID)
                 {
-                    if (sp.IDDanhMuc == dm.ID)
-                    {
-                <li>
-                    <img src="~/Areas/Admin/img/@sp.Avatar" width="50%" /><br />
-                    <span class="namePD">@sp.TenSP</span><br />
-                    <span class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
-                    @if (strTB != "")
-                    {
-                        @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
-                        <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
-                    }
-                </li>
-                    }
+                    <li>
+                        <img src="~/Areas/Admin/img/@sp.Avatar" width="50%" /><br />
+                        <span class="namePD">@sp.TenSP</span><br />
+                        <span class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
+                        @if (strTB != "")
+                        {
+                            @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
+                            <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
+                        }
+                    </li>
                 }
-            </ul>
 
+             }
+            </ul>
         }
     </div>
 </div>
@@ -66,7 +66,7 @@
 
         @{if (strTB != "")
             {
-                <h2 style="color: forestgreen; font-weight: bold;">Bàn @(strTB.AsInt())</h2>
+                <h2 style="color: forestgreen; font-weight: bold; text-align:center">Bàn @(strTB.AsInt())</h2>
                 <table>
                     <thead>
                         <tr>
@@ -83,7 +83,7 @@
                         @{ if (Session[strTB] != null)
                             {
                                 var card = Session[strTB] as coffeeMVV04.Areas.Sales.model.Cards;
-                                for (int i = card.product.Count - 1; i >= 0; i--)
+                                for (int i = 0; i <= card.product.Count - 1; i++)
                                 {
                                                 <tr>
                                                     <td>@(i+1)</td>
