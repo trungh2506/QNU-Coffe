@@ -17,6 +17,7 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         public ActionResult Index()
         {
             CountProduct();
+            CountCategory();
             return View(db.SanPhams.ToList());
 
         }
@@ -204,7 +205,7 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 int count = db.SanPhams.Count();
-                ViewBag.Count = count;
+                ViewBag.Countt = count;
             }
         }
        

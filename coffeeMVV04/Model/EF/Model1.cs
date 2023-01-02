@@ -8,7 +8,7 @@ namespace coffeeMVV04.Model.EF
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model20")
+            : base("name=QNU_CoffeeEntities")
         {
         }
 
