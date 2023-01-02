@@ -25,11 +25,11 @@
             <div class="menu-grid">
                 @foreach (var item in Model)
                 {
-                    <a href="#" class="menu-info" style="color:black">
-                        <h4 style="float: left">@item.TenSP</h4>
-                        <p style="float:right;color:forestgreen">@item.GiaSP$</p>
-                        <p style="clear:both;"><br />@item.MoTaNgan</p>
-                    </a>
+                <a href="#" class="menu-info" style="color:black">
+                    <h4 style="float: left">@item.TenSP</h4>
+                    <p style="float:right;color:forestgreen">@String.Format("{0:#,##0} VND", item.GiaSP)</p>
+                    <p style="clear:both;"><br />@item.MoTaNgan</p>
+                </a>
                 }
 
             </div>

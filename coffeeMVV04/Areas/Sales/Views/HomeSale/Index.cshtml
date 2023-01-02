@@ -12,17 +12,19 @@
 
 
 <div class="TableBox">
-    <div class="mesBox"><h3>1.Chọn bàn</h3></div>
+    <div class="mesBox"><h3>1. Chọn bàn</h3></div>
     <div class="ListTable">
+
         @for (int i = 0; i <= 7; i++)
         {
-            @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i+1 }, new { @class = "table a" })
+                @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i + 1 }, new { @class = "table a" })
         }
+
     </div>
 </div>
 
 <div class="menuBox">
-    <div class="mesBox"><h3>2.Chọn nước uống</h3></div>
+    <div class="mesBox"><h3>2. Chọn nước uống</h3></div>
     <div class="search">
         <input type="text" />
         <button class=" btn search"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -60,7 +62,7 @@
 </div>
 
 <div class="bill-area">
-    <div class="mesBox"><h3>3.Hoá đơn</h3></div>
+    <div class="mesBox"><h3>3. Hoá đơn</h3></div>
     <div class="list-menu">
 
         @{if (strTB != "")
@@ -120,17 +122,17 @@
             {
                 var card = Session[strTB] as coffeeMVV04.Areas.Sales.model.Cards;
                 <span>Bàn số: @(strTB.AsInt()+1) </span><br />
-                <span style="font-size:20px">Tổng tiền: @String.Format("{0:#,##0} VND", card.Total())</span>
+                <span style="font-size:30px; font-weight: 500">Tổng tiền: @String.Format("{0:#,##0} VND", card.Total())</span>
             }
             else
             {
                 <span>Bàn số: Chưa chọn bàn </span><br />
-                <span style="font-size:20px">Tổng tiền: 0 VND</span>
+                <span style="font-size:30px; font-weight: 500">Tổng tiền: 0 VND</span>
             }
         }
 
     </div>
-    <button class="btnTotal">Thành tiên</button>
+    <button class="btnTotal">Thanh Toán</button>
 </div>
 
 
