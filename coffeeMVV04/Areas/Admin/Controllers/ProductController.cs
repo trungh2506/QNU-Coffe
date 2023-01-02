@@ -90,7 +90,7 @@ namespace coffeeMVC05.Areas.Admin.Controllers
             return View(sanPham);
         }
 
-        //Lấy dữ liệu từ bảng đổ vào from deteteProduct
+        //Lấy dữ liệu từ bảng đổ vào from deleteProduct
         public ActionResult DeleteProduct(int? id)
         {
             if (id == null)
@@ -183,8 +183,17 @@ namespace coffeeMVC05.Areas.Admin.Controllers
         public ActionResult DeleteProductConfirmed(int id)
         {
             SanPham sanPham = db.SanPhams.Find(id);
+            string currentImg = Server.MapPath("~/Areas/Admin/img/" + sanPham.Avatar);
             db.SanPhams.Remove(sanPham);
-            db.SaveChanges();
+
+           
+            if(db.SaveChanges() > 0)
+            {
+                if (System.IO.File.Exists(currentImg))
+                {
+                    System.IO.File.Delete(currentImg);
+                }
+            }
             return RedirectToAction("Index");
         }
 
