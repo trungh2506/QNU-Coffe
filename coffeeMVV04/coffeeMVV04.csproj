@@ -229,6 +229,8 @@
     <Content Include="Areas\Sales\Views\HomeSale\Index.cshtml" />
     <Content Include="Areas\Sales\Views\Order\Index.cshtml" />
     <Content Include="Areas\Sales\Views\Order\CheckOut.cshtml" />
+    <Content Include="Areas\Sales\Views\Order\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeAdmin\Detail.cshtml" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\jquery-3.6.1.min.js" />

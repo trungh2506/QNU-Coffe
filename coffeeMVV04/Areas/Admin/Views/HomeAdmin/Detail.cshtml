@@ -1,0 +1,85 @@
+﻿@model IEnumerable<coffeeMVV04.Model.EF.ChiTietHoaDon>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .search-area {
+        width: 100%;
+        text-align: center;
+    }
+
+    input {
+        width: 50%;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: white;
+        background-color: cornflowerblue;
+        cursor: pointer;
+    }
+</style>
+
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers">@ViewBag.Count</div>
+            <div class="cardName">Hóa đơn tất cả</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-list"></i>
+        </div>
+    </div>
+
+</div>
+<div class="details">
+    <div class="recentMenu">
+        <div class="cardHeader">
+            <h2>Danh mục</h2>
+            <a href="@Url.Action("Index","HomeAdmin")" class="btn">Quay lại</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>ID Hóa đơn</td>
+                    <td>ID Sản phẩm</td>
+                    <td>Số lượng</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IDHoaDon)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IDSanPham)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoLuong)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Delete","Product",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>Xóa</span></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+

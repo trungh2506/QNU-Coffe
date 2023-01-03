@@ -123,5 +123,21 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             ViewBag.TotalOrder = TotalOrder.ToString();
 
         }
+        
+        //Xem chi tiết đơn hàng
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            if (hoaDon == null)
+            {
+                return HttpNotFound();
+            }
+            return View(db.ChiTietHoaDons.Where(a => a.IDHoaDon == id).ToList());
+        }
+
     }
 }
