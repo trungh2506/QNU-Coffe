@@ -45,7 +45,7 @@
 
         .tg .tg-cmh6 {
             border-color: inherit;
-            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif !important;
+            font-family: 'Be Vietnam Pro', sans-serif;
             font-size: 20px;
             font-weight: bold;
             text-align: right;
@@ -54,7 +54,7 @@
 
         .tg .tg-2u83 {
             border-color: inherit;
-            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif !important;
+            font-family: 'Be Vietnam Pro', sans-serif;
             font-size: 20px;
             font-weight: bold;
             text-align: center;
@@ -90,11 +90,11 @@
             @{var hoadon = Session["hoaDon"] as coffeeMVV04.Model.EF.HoaDon;
                 var cthd = Session["cthd"] as coffeeMVV04.Areas.Sales.model.Carts;
 
-
+                <h3 style="text-align:left; font-weight: 200"> Ngày giờ: <b>@hoadon.Date.ToString()</b></h3>
+                <h3 style="text-align:left; font-weight: 200"> Nhân viên: <b>@Session["HoTen"].ToString()</b></h3>
                 for (int i = 0; i < cthd.product.Count; i++)
                 {
-                    <h3 style="text-align:left; font-weight: 200"> Ngày giờ: <b>@hoadon.Date.ToString()</b></h3>
-                    <h3 style="text-align:left; font-weight: 200"> Nhân viên: <b>@Session["HoTen"].ToString()</b></h3>
+
                     <tr>
                         @if (i == 0)
                         {
