@@ -49,18 +49,17 @@
             <h2>Danh sách nhân viên</h2>
         </div>
         <table class="table">
-            <tr>
-            <tr>
-                <tb>STT</tb>
-                <td>ID</td>
-                <td>Họ tên</td>
-                <td>Số điện thoại</td>
-                <td>Email</td>
-                <td>Mật khẩu</td>
-                <td>Địa chỉ</td>
-                <td>Admin</td>
-            </tr>
-
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Họ tên</td>
+                    <td>Số điện thoại</td>
+                    <td>Email</td>
+                    <td>Mật khẩu</td>
+                    <td>Địa chỉ</td>
+                    <td>Admin</td>
+                </tr>
+            </thead>
             @foreach (var item in Model)
             {
                 <tr>

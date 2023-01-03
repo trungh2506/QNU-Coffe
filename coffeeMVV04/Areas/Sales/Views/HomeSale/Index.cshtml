@@ -129,7 +129,11 @@
                 }
             }
         </div>
-        <input type="submit" class="btnTotal"  style="font-size: 20px; font-weight:bold" value="Thanh toán" />
+        @if(Session[strTB] != null)
+                {
+                    <input type="submit" class="btnTotal" style="font-size: 20px; font-weight:bold" value="Thanh toán" />
+                }
+        
     </div>
 }
 

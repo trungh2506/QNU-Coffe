@@ -25,11 +25,11 @@ namespace coffeeMVV04.Areas.Sales.Controllers
         
 
         //Checkout
-        [HttpGet]
+     /*   [HttpGet]
         public ActionResult CheckOut()
         {
             return View();
-        }
+        }*/
         [HttpPost]
         public ActionResult CheckOut(FormCollection form)
         {
@@ -73,7 +73,7 @@ namespace coffeeMVV04.Areas.Sales.Controllers
                     db.ChiTietHoaDons.Add(cthd);
                 }
                 db.SaveChanges();
-                return View();
+                 return View("CheckOut");
             }
         }
 
@@ -149,20 +149,28 @@ namespace coffeeMVV04.Areas.Sales.Controllers
                 //trả về badrequest
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HoaDon hoaDon = db.HoaDons.Find(id);
-            ChiTietHoaDon cthd = new ChiTietHoaDon();
-            cthd.IDHoaDon = hoaDon.ID;
+            ChiTietHoaDon cthd = db.ChiTietHoaDons.Find(id);
             
             if (cthd == null)
             {
                 return HttpNotFound();
             }
             db.ChiTietHoaDons.Remove(cthd);
-            db.HoaDons.Remove(hoaDon);
             db.SaveChanges();
-            /*return RedirectToAction("Index");*/
-            return View("Index");
+            return RedirectToAction("Index");
         }
+
+        //In hóa đơn PDF
+        public ActionResult CreatePDF()
+        {
+            return new Rotativa.ViewAsPdf("CheckOut")
+            {
+                PageSize = Rotativa.Options.Size.A5,
+                FileName = "Hóa-đơn.pdf",
+                CustomSwitches = "--print-media-type"
+            };
+        }
+       
 
     }
 }
