@@ -22,7 +22,7 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             CountTotalMoneyAllDay();
             return View(db.HoaDons.ToList());
         }
-
+        
 
         //Checkout
         [HttpGet]
@@ -123,13 +123,14 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             ViewBag.TotalOrder = TotalOrder.ToString();
 
         }
-        
+
+
         //Xem chi tiết đơn hàng
         public ActionResult Detail(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             HoaDon hoaDon = db.HoaDons.Find(id);
             if (hoaDon == null)
@@ -137,6 +138,30 @@ namespace coffeeMVV04.Areas.Sales.Controllers
                 return HttpNotFound();
             }
             return View(db.ChiTietHoaDons.Where(a => a.IDHoaDon == id).ToList());
+        }
+
+        //Xóa chi tiết hóa đơn và hóa đơn
+        public ActionResult Delete(int? id)
+        {
+            //Nếu không thấy id cần xóa
+            if (id == null)
+            {
+                //trả về badrequest
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HoaDon hoaDon = db.HoaDons.Find(id);
+            ChiTietHoaDon cthd = new ChiTietHoaDon();
+            cthd.IDHoaDon = hoaDon.ID;
+            
+            if (cthd == null)
+            {
+                return HttpNotFound();
+            }
+            db.ChiTietHoaDons.Remove(cthd);
+            db.HoaDons.Remove(hoaDon);
+            db.SaveChanges();
+            /*return RedirectToAction("Index");*/
+            return View("Index");
         }
 
     }

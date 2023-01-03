@@ -62,7 +62,9 @@
         .tg .tg-0pky {
             border-color: inherit;
             text-align: left;
-            vertical-align: top
+            vertical-align: top;
+            font-size: 20px;
+            
         }
 </style>
 <div class="details">
@@ -95,19 +97,20 @@
                         <td class="tg-0pky">@cthd.product[i].ID</td>
                         <td class="tg-0pky">@cthd.product[i].TenSP</td>
                         <td class="tg-0pky">@cthd.product[i].SoLuong</td>
-                        <td class="tg-0pky">@cthd.product[i].GiaSP</td>
+                        <td class="tg-0pky">@cthd.product[i].GiaSP VNĐ</td>
 
                     </tr>
                 }
                 <tr>
                     <td class="tg-cmh6" colspan="6">Tổng cộng: </td>
-                    <td class="tg-0pky">@cthd.Total().ToString()</td>
+                    <td class="tg-0pky">@cthd.Total().ToString() VNĐ</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 <div class="tg" style="text-align:right;">
+    <a style="position: relative;background-color: forestgreen; color: white;padding:10px" href="">In hóa đơn</a>
     <a style="position: relative;background-color: forestgreen; color: white;padding:10px" href="@Url.Action("ClearSession","Order",new { numTB = cthd.numTable.ToString()})">Check out</a>
 </div>
 

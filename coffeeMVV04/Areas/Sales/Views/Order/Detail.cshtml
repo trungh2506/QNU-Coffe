@@ -42,8 +42,8 @@
 <div class="details">
     <div class="recentMenu">
         <div class="cardHeader">
-            <h2>Danh mục</h2>
-            <a href="@Url.Action("Sales","Order")" class="btn">Quay lại</a>
+            <h2>Chi tiết hóa đơn</h2>
+            <a href="@Url.Action("Index","Order")" class="btn">Quay lại</a>
         </div>
         <table>
             <thead>
@@ -58,27 +58,27 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IDHoaDon)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IDSanPham)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SoLuong)
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Delete","Product",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>Xóa</span></a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IDHoaDon)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IDSanPham)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoLuong)
+                        </td>
+                        @*<td>
+                                <a href="@Url.Action("Delete","Order",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>Xóa</span></a>
+                            </td>*@
+                    </tr>
                 }
             </tbody>
         </table>
-    </div>
 
+    </div>
 </div>
 

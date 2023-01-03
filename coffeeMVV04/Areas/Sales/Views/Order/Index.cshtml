@@ -38,7 +38,7 @@
     <div class="recentOrders">
         <div class="cardHeader">
             <h2>Đơn hàng</h2>
-            <a href="#" class="btn">Xem Tất cả</a>
+            <a href="@Url.Action("Detail","Order")" class="btn">Xem Tất cả</a>
         </div>
         <table>
             <thead>
@@ -75,10 +75,10 @@
                         {
                             <td><span class="status owe">Chưa thanh toán</span></td>
                         }
-                         <td>
-                                <a href="@Url.Action("Detail","Order",new {id=item.ID })"><i class="fa-solid fa-circle-info"></i><span>Chi tiết</span></a>
-                                
-                         </td>
+                    <td>
+                        <a href="@Url.Action("Detail","Order",new {id=item.ID })"><i class="fa-solid fa-circle-info"></i><span>Xem chi tiết</span></a>
+                        <a href="@Url.Action("Delete","Order")"><i class="fa-solid fa-trash"></i><span>Xóa đơn hàng</span></a>
+                    </td>
                     </tr>
                 }
             </tbody>
