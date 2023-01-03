@@ -17,6 +17,9 @@ namespace coffeeMVV04.Areas.Sales.Controllers
         // GET: Sales/Order
         public ActionResult Index()
         {
+            CountTotalOrder();
+            CountTotalMoney();
+            CountTotalMoneyAllDay();
             return View(db.HoaDons.ToList());
         }
 
@@ -35,14 +38,16 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             {
                 return RedirectToAction("Login", "Home", new { area = "" });
             }
-            else {
-                //lấy số bàn
+            else
+            {
+                //lấy số bàn từ form
                 string strTB = form["NumTB"].ToString();
                 //Thêm vào bảng Hóa Đơn
                 Carts cart = new Carts();
+                //lưu session vào cart
                 cart = Session[strTB] as Carts;
 
-                //lưu order vào session để chuyển đi trang checkout
+                //lưu order vào session chi tiết hóa đơn để chuyển đi trang checkout
                 Session["cthd"] = cart;
 
                 //
@@ -53,7 +58,7 @@ namespace coffeeMVV04.Areas.Sales.Controllers
                 hoaDon.IDUser = Int32.Parse(Session["UserID"].ToString());
                 db.HoaDons.Add(hoaDon);
 
-                //luư thông tin hóa đơn vào sesion 
+                //luư thông tin hóa đơn vào session 
                 Session["hoaDon"] = hoaDon;
 
                 //Thêm vào bảng CTHD
@@ -78,9 +83,45 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             Session.Remove(numTB);
             Session.Remove("hoaDon");
             Session.Remove("cthd");
-            return RedirectToAction("Index","HomeSale");
+            return RedirectToAction("Index", "HomeSale");
         }
 
 
+        //Thống kê số tiền tất cả
+        public void CountTotalMoneyAllDay()
+        {
+            if (ModelState.IsValid)
+            {
+                var TotalMoney = db.HoaDons.Sum(d => d.TongCong);
+                ViewBag.TotalMoneyAllDay = TotalMoney.ToString();
+            }
+        }
+
+        //Thống kê số tiền trong ngày
+        public void CountTotalMoney()
+        {
+            var today = DateTime.Today;
+            if (ModelState.IsValid)
+            {
+                var TotalMoney = db.HoaDons.Where(d => d.Date == today).Sum(d => d.TongCong);
+                ViewBag.TotalMoney = TotalMoney.ToString();
+            }
+        }
+
+        //Thống kê số ly bán được trong ngày
+        public void CountTotalOrder()
+        {
+            var today = DateTime.Today;
+            var record = (from a in db.ChiTietHoaDons
+                          join b in db.HoaDons
+                          on a.IDHoaDon equals b.ID
+                          where b.Date == today
+                          select a);
+
+            var TotalOrder = record.Select(c => c.SoLuong).Sum();
+
+            ViewBag.TotalOrder = TotalOrder.ToString();
+
+        }
     }
 }

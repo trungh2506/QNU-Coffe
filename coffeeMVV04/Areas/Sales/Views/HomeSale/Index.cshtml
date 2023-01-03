@@ -118,7 +118,7 @@
             @{ if (Session[strTB] != null)
                 {
                     var cart = Session[strTB] as coffeeMVV04.Areas.Sales.model.Carts;
-                     <label>bàn số: </label><input type="text" style="pointer-events: none;" name="numTB" value="@strTB" /><br />
+                     <label>Bàn số: </label><input type="text" style="pointer-events: none; font-size: 20px; font-weight: bold; background: transparent; border: none; color: white; " name="numTB" value="@strTB" /><br />
                     <span style="font-size:30px; font-weight: 500" name="Total">Tổng tiền: @String.Format("{0:#,##0} VND", cart.Total())</span>
                     
                 }
