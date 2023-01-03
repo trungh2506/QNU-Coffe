@@ -36,14 +36,25 @@ namespace coffeeMVV04.Areas.Sales.Controllers
                 return RedirectToAction("Login", "Home", new { area = "" });
             }
             else {
+                //lấy số bàn
+                string strTB = form["NumTB"].ToString();
                 //Thêm vào bảng Hóa Đơn
-                Carts cart = Session["srtTB"] as Carts;
+                Carts cart = new Carts();
+                cart = Session[strTB] as Carts;
+
+                //lưu order vào session để chuyển đi trang checkout
+                Session["cthd"] = cart;
+
+                //
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.Date = DateTime.Now;
                 hoaDon.TrangThai = true;
-                hoaDon.TongCong = Double.Parse(form["Total"].ToString());
+                hoaDon.TongCong = Double.Parse(cart.Total().ToString());
                 hoaDon.IDUser = Int32.Parse(Session["UserID"].ToString());
                 db.HoaDons.Add(hoaDon);
+
+                //luư thông tin hóa đơn vào sesion 
+                Session["hoaDon"] = hoaDon;
 
                 //Thêm vào bảng CTHD
                 foreach (var item in cart.product)
@@ -57,10 +68,19 @@ namespace coffeeMVV04.Areas.Sales.Controllers
                     db.ChiTietHoaDons.Add(cthd);
                 }
                 db.SaveChanges();
-                return RedirectToAction("CheckOut");
+                return View();
             }
         }
-       
+
+        //nút Checkout Clear các order và hóa đơn đã thanh toán
+        public ActionResult ClearSession(string numTB)
+        {
+            Session.Remove(numTB);
+            Session.Remove("hoaDon");
+            Session.Remove("cthd");
+            return RedirectToAction("Index","HomeSale");
+        }
+
 
     }
 }

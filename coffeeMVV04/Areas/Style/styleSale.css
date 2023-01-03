@@ -371,3 +371,220 @@ li {
         color: forestgreen;
         background-color: white;
     }
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 30px;
+}
+
+    .cardBox .card {
+        position: relative;
+        background: var(--white);
+        padding: 30px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 7px 25px rgb(0,0,0,0.08);
+        cursor: pointer;
+    }
+
+        .cardBox .card .numbers {
+            position: relative;
+            font-weight: 500;
+            font-size: 2em;
+            color: var(--Red);
+        }
+
+        .cardBox .card .cardName {
+            color: var(--black2);
+            font-size: 1.1em;
+            margin: 5px;
+        }
+
+        .cardBox .card .iconBox {
+            font-size: 3.5em;
+            color: var(--black2);
+        }
+
+        .cardBox .card:hover {
+            background: var(--Red);
+        }
+
+            .cardBox .card:hover .numbers,
+            .cardBox .card:hover .cardName,
+            .cardBox .card:hover .iconBox {
+                color: var(--white);
+            }
+
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+    .details .recentOrders,
+    .details .recentMenu {
+        position: relative;
+        display: grid;
+        min-height: 50px;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 7px 25px rgb(0,0,0,0.08);
+    }
+
+        .details .recentOrders .cardHeader,
+        .details .recentMenu .cardHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+            .details .recentOrders .cardHeader h2,
+            .details .recentMenu .cardHeader h2 {
+                font-weight: 600;
+                color: var(--Red);
+            }
+
+.btn {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--Red);
+    border-radius: 6px;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+    .details table thead td {
+        font-weight: 600;
+    }
+
+.details .recentOrders table tr,
+.details .recentMenu table tr {
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+    .details .recentOrders table tr:last-child,
+    .details .recentMenu table tr:last-child {
+        border-bottom: none;
+    }
+
+.details .recentOrders table tbody tr:hover,
+.details .recentMenu table tbody tr:hover,
+.details .recentMenu table tbody tr:hover a {
+    background: var(--Red);
+    color: var(--white);
+}
+
+.details .recentOrders table tr td,
+.details .recentMenu table tr td {
+    padding: 10px;
+}
+
+    .details .recentMenu table tr td a {
+        position: relative;
+        margin-right: 10px;
+        color: var(--Red);
+    }
+
+        .details .recentMenu table tr td a span {
+            position: absolute;
+            left: -11px;
+            top: -40px;
+            background-color: var(--black1);
+            color: var(--white);
+            padding: 5px;
+            transition: .3s;
+            display: none;
+        }
+
+        .details .recentMenu table tr td a:hover span {
+            display: block;
+        }
+
+.status.online {
+    background-color: dodgerblue;
+    color: var(--white);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.status.pay {
+    background-color: forestgreen;
+    color: var(--white);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.status.owe {
+    background-color: red;
+    color: var(--white);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+@media(max-width:991px) {
+    .navigation {
+        left: -300px;
+    }
+
+        .navigation.active {
+            width: 300px;
+            left: 0;
+        }
+
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+        .main.active {
+            left: 300px;
+        }
+
+    .cardBox {
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .recentOrders {
+        overflow-x: auto;
+    }
+
+    .recentMenu {
+        overflow-x: auto;
+    }
+
+    .cardHeader h2 {
+        font-size: 20px;
+    }
+
+    .user {
+        min-width: 20px;
+    }
+
+    .navigation {
+        width: 100%;
+        left: -100%;
+        z-index: 1000;
+    }
+
+        .navigation.active {
+            width: 100%;
+            left: 0;
+        }
+
+    .toggle {
+        z-index: 1001;
+    }
+}

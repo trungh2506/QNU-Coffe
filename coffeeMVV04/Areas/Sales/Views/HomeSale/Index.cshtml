@@ -118,13 +118,13 @@
             @{ if (Session[strTB] != null)
                 {
                     var cart = Session[strTB] as coffeeMVV04.Areas.Sales.model.Carts;
-                    <span>Bàn số: @(strTB.AsInt()) </span><br />
+                     <label>bàn số: </label><input type="text" style="pointer-events: none;" name="numTB" value="@strTB" /><br />
                     <span style="font-size:30px; font-weight: 500" name="Total">Tổng tiền: @String.Format("{0:#,##0} VND", cart.Total())</span>
-                    <input type="number" name="Total" value="@cart.Total()"/>
+                    
                 }
                 else
                 {
-                    <span>Bàn số: Chưa chọn bàn </span><br />
+                    <span>Bàn số:  </span><br />
                     <span style="font-size:30px; font-weight: 500">Tổng tiền: 0 VND</span>
                 }
             }

@@ -8,8 +8,14 @@
 
 <style type="text/css">
     .tg {
+        position:relative;
         border-collapse: collapse;
         border-spacing: 0;
+        position: relative;
+        min-height: 50px;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 7px 25px rgb(0,0,0,0.08);
     }
 
         .tg td {
@@ -59,33 +65,50 @@
             vertical-align: top
         }
 </style>
-<table class="tg">
-    <thead>
-        <tr>
-            <th class="tg-2u83">ID</th>
-            <th class="tg-2u83">ID User</th>
-            <th class="tg-2u83">ID Sản phẩm</th>
-            <th class="tg-2u83">Date</th>
-            <th class="tg-2u83">Số lượng</th>
-            <th class="tg-2u83">Trạng thái</th>
-        </tr>
-    </thead>
-    <tbody>
-        
+<div class="details">
+    <table class="tg">
+        <thead>
             <tr>
-                <td class="tg-0pky"></td>
-                <td class="tg-0pky"></td>
-                <td class="tg-0pky"></td>
-                <td class="tg-0pky"></td>
-                <td class="tg-0pky"></td>
-                <td class="tg-0pky"></td>
+                <th class="tg-2u83">ID</th>
+                <th class="tg-2u83">ID User</th>
+                <th class="tg-2u83">Date</th>
+                <th class="tg-2u83">ID Sản phẩm</th>
+                <th class="tg-2u83">Tên sản phẩm</th>
+                <th class="tg-2u83">Số lượng</th>
+                <th class="tg-2u83">Giá</th>
             </tr>
-            <tr>
-                <td class="tg-cmh6" colspan="5">Tổng cộng: </td>
-                <td class="tg-0pky">@</td>
-            </tr>
-        
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @{var hoadon = Session["hoaDon"] as coffeeMVV04.Model.EF.HoaDon;
+                var cthd = Session["cthd"] as coffeeMVV04.Areas.Sales.model.Carts;
+
+
+                for (int i = 0; i < cthd.product.Count; i++)
+                {
+                    <tr>
+                        @if (i == 0)
+                        {
+                            <td rowspan="@cthd.product.Count" class="tg-0pky">@hoadon.ID.ToString()</td>
+                            <td rowspan="@cthd.product.Count" class="tg-0pky">@Session["UserID"].ToString()</td>
+                            <td rowspan="@cthd.product.Count" class="tg-0pky">@hoadon.Date.ToString()</td>
+                        }
+                        <td class="tg-0pky">@cthd.product[i].ID</td>
+                        <td class="tg-0pky">@cthd.product[i].TenSP</td>
+                        <td class="tg-0pky">@cthd.product[i].SoLuong</td>
+                        <td class="tg-0pky">@cthd.product[i].GiaSP</td>
+                        }
+                    </tr>
+                }
+                <tr>
+                    <td class="tg-cmh6" colspan="6">Tổng cộng: </td>
+                    <td class="tg-0pky">@cthd.Total().ToString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="tg" style="text-align:right;">
+    <a style="position: relative;background-color: forestgreen; color: white;padding:10px" href="@Url.Action("ClearSession","Order",new { numTB = cthd.numTable.ToString()})">Check out</a>
+</div>
 
 
