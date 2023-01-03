@@ -2,14 +2,15 @@
 @model dynamic
 @{
     ViewBag.Title = "CheckOut";
-    Layout = "~/Areas/Sales/Views/Shared/_Layout.cshtml";
+    @*Layout = "~/Areas/Sales/Views/Shared/_Layout.cshtml";*@
 }
 
 
 <style type="text/css">
- 
+
     .tg {
-        position:relative;
+        border-color: black;
+        position: relative;
         border-collapse: collapse;
         border-spacing: 0;
         position: relative;
@@ -57,7 +58,7 @@
             font-size: 20px;
             font-weight: bold;
             text-align: center;
-            vertical-align: top
+            vertical-align: top;
         }
 
         .tg .tg-0pky {
@@ -68,14 +69,18 @@
 
         }
 </style>
+<div class="title">
+    <h1 style="text-align:center">QNU Coffee</h1>
+    <h3 style="text-align:center"> 170 An Dương Vương, Nguyễn Văn Cừ, Thành phố Qui Nhơn, Bình Định</h3>
+    <br>
+    <h1 style="text-align:center; font-size: 30px">HÓA ĐƠN THANH TOÁN</h1>
+    
+</div>
 <div class="details">
     <table class="tg">
         <thead>
             <tr>
-                <th class="tg-2u83">ID</th>
-                <th class="tg-2u83">ID User</th>
-                <th class="tg-2u83">Date</th>
-                <th class="tg-2u83">ID Sản phẩm</th>
+                <th class="tg-2u83">ID Hóa đơn</th>
                 <th class="tg-2u83">Tên sản phẩm</th>
                 <th class="tg-2u83">Số lượng</th>
                 <th class="tg-2u83">Giá</th>
@@ -88,30 +93,26 @@
 
                 for (int i = 0; i < cthd.product.Count; i++)
                 {
+                    <h3 style="text-align:left; font-weight: 200"> Ngày giờ: <b>@hoadon.Date.ToString()</b></h3>
+                    <h3 style="text-align:left; font-weight: 200"> Nhân viên: <b>@Session["HoTen"].ToString()</b></h3>
                     <tr>
                         @if (i == 0)
                         {
                             <td rowspan="@cthd.product.Count" class="tg-0pky">@hoadon.ID.ToString()</td>
-                            <td rowspan="@cthd.product.Count" class="tg-0pky">@Session["UserID"].ToString()</td>
-                            <td rowspan="@cthd.product.Count" class="tg-0pky">@hoadon.Date.ToString()</td>
                         }
-                        <td class="tg-0pky">@cthd.product[i].ID</td>
                         <td class="tg-0pky">@cthd.product[i].TenSP</td>
                         <td class="tg-0pky">@cthd.product[i].SoLuong</td>
                         <td class="tg-0pky">@cthd.product[i].GiaSP VNĐ</td>
-
                     </tr>
                 }
-                <tr>
-                    <td class="tg-cmh6" colspan="6">Tổng cộng: </td>
-                    <td class="tg-0pky">@cthd.Total().ToString() VNĐ</td>
-                </tr>
             }
         </tbody>
     </table>
+    <h2 style="text-align:right; font-weight: 200; padding: 10px">Tổng        <b>@cthd.Total().ToString() VNĐ</b></h2>
+    <h3 style="text-align:center; font-weight: 200; padding: 10px">Rất hân hạnh được phục vụ quý khách!</b></h3>
 </div>
-<div class="tg" style="text-align:right;">
-    <a id="print-me" style="position: relative;background-color: forestgreen; color: white;padding:10px" onclick="window.open('@Url.Action("CreatePDF", "Order")')">In hóa đơn</a>
+<div  style="text-align:right;">
+    <a id="print-me" style="cursor:pointer; position: relative;background-color: forestgreen; color: white;padding:10px" onclick="window.open('@Url.Action("CreatePDF", "Order")')">In hóa đơn</a>
     <a style="position: relative;background-color: forestgreen; color: white;padding:10px" href="@Url.Action("ClearSession","Order",new { numTB = cthd.numTable.ToString()})">Check out</a>
 </div>
 
