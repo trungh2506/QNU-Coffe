@@ -12,7 +12,9 @@
 @using (Html.BeginForm("CheckOut", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="TableBox">
-        <div class="mesBox"><h3>1. Chọn bàn</h3></div>
+        <div class="mesBox">
+        <h3>1. Chọn bàn</h3>
+        </div>
         <div class="ListTable">
             @for (int i = 0; i <= 7; i++)
             {
@@ -49,7 +51,7 @@
                                 @if (strTB != "")
                                 {
                                     @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
-                                    <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID,})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
+                                    <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
                                 }
                             </li>
                         }

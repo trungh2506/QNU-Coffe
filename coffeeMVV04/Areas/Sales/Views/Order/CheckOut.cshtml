@@ -75,6 +75,7 @@
     <br>
     <h1 style="text-align:center; font-size: 30px">HÓA ĐƠN THANH TOÁN</h1>
     
+
 </div>
 <div class="details">
     <table class="tg">
@@ -90,6 +91,7 @@
             @{var hoadon = Session["hoaDon"] as coffeeMVV04.Model.EF.HoaDon;
                 var cthd = Session["cthd"] as coffeeMVV04.Areas.Sales.model.Carts;
 
+                <h2 style="text-align:left; font-size: 30px">Bàn: @Session["numTB"]</h2>
                 <h3 style="text-align:left; font-weight: 200"> Ngày giờ: <b>@hoadon.Date.ToString()</b></h3>
                 <h3 style="text-align:left; font-weight: 200"> Nhân viên: <b>@Session["HoTen"].ToString()</b></h3>
                 for (int i = 0; i < cthd.product.Count; i++)

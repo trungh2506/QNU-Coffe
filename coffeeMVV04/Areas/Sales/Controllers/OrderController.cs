@@ -49,6 +49,8 @@ namespace coffeeMVV04.Areas.Sales.Controllers
 
                 //lưu order vào session chi tiết hóa đơn để chuyển đi trang checkout
                 Session["cthd"] = cart;
+                //lưu số bàn vào session
+                Session["numTB"] = strTB;
 
                 //
                 HoaDon hoaDon = new HoaDon();
