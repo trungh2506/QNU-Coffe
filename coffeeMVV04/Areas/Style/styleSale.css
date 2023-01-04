@@ -200,6 +200,9 @@ li {
 .table.a {
     background-color: forestgreen;
 }
+.table.b{
+    background-color:red;
+}
 
     .table.reservation {
         background-color: darkblue;

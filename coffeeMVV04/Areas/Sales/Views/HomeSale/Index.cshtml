@@ -13,13 +13,28 @@
 {
     <div class="TableBox">
         <div class="mesBox">
-        <h3>1. Chọn bàn</h3>
+            <h3>1. Chọn bàn</h3>
         </div>
         <div class="ListTable">
+   
             @for (int i = 0; i <= 7; i++)
             {
-                @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i + 1 }, new { @class = "table a", @style = "font-size: 20px; font-weight: bold" })
-            }
+                string bg = "table a";
+                if (Session[(i+1).ToString()] != null)
+                {
+                    var cart = Session[(i + 1).ToString()] as coffeeMVV04.Areas.Sales.model.Carts;
+                    if (cart.getCounlist() >= 0)
+                    {
+                        bg = "table b";
+                    }
+                    if (cart.getCounlist() == 0)
+                    {
+                        bg = "table a";
+                        }
+
+                }
+                    @Html.ActionLink("Bàn " + (i + 01), "Index", new { NumTB = i + 1 }, new { @class = bg, @style = ";font-size: 20px; font-weight: bold" })
+                }
 
         </div>
     </div>
@@ -41,15 +56,15 @@
             {
                 <ul id="@dm.ID" class="menu">
                     @foreach (SanPham sp in Model.Sanpham)
-                    {
-                        if (sp.IDDanhMuc == dm.ID)
-                        {
+            {
+                if (sp.IDDanhMuc == dm.ID)
+                {
                             <li>
                                 <img src="~/Areas/Admin/img/@sp.Avatar" width="50%" /><br />
                                 <span class="namePD">@sp.TenSP</span><br />
                                 <span style="font-weight: bold" class="price">@String.Format("{0:#,##0 VND}", sp.GiaSP)</span>
                                 @if (strTB != "")
-                                {
+            {
                                     @*@Html.ActionLink("Thêm", "addToCart", "HomeSale", new { numTB = strTB.AsInt(), id = sp.ID }, new { @class = "btn-add" })*@
                                     <a href="@Url.Action("addToCart","HomeSale",new { NumTB = strTB.AsInt(), id = sp.ID})" class="btn-add"><i class="fa-solid fa-plus"></i> Thêm</a>
                                 }
@@ -120,9 +135,9 @@
             @{ if (Session[strTB] != null)
                 {
                     var cart = Session[strTB] as coffeeMVV04.Areas.Sales.model.Carts;
-                     <label>Bàn số: </label><input type="text" style="pointer-events: none; font-size: 20px; font-weight: bold; background: transparent; border: none; color: white; " name="numTB" value="@strTB" /><br />
+                    <label>Bàn số: </label><input type="text" style="pointer-events: none; font-size: 20px; font-weight: bold; background: transparent; border: none; color: white; " name="numTB" value="@strTB" /><br />
                     <span style="font-size:30px; font-weight: 500" name="Total">Tổng tiền: @String.Format("{0:#,##0} VND", cart.Total())</span>
-                    
+
                 }
                 else
                 {
@@ -131,11 +146,11 @@
                 }
             }
         </div>
-        @if(Session[strTB] != null)
-                {
-                    <input type="submit" class="btnTotal" style="font-size: 20px; font-weight:bold" value="Thanh toán" />
-                }
-        
+        @if (Session[strTB] != null)
+        {
+            <input type="submit" class="btnTotal" style="font-size: 20px; font-weight:bold" value="Thanh toán" />
+        }
+
     </div>
 }
 
