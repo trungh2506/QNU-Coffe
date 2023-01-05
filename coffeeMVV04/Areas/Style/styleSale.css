@@ -346,6 +346,18 @@ li {
     .bill-area table tbody tr:hover {
         background-color: aqua;
     }
+    .bill-area table tbody tr:nth-child(2n) {
+        background-color: #f6f6f6;
+    }
+    .bill-area table tbody tr:nth-child(2n+1) {
+        background-color: #ffffff;
+    }
+     table tbody tr:nth-child(2n) {
+        background-color: #f6f6f6;
+    }
+     table tbody tr:nth-child(2n+1) {
+        background-color: #ffffff;
+     }
 
 .box {
     width: 35%;

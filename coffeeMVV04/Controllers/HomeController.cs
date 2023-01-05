@@ -43,6 +43,7 @@ namespace coffeeMVV04.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string sdt, string password)
         {
+            ViewBag.error = "";
             if (ModelState.IsValid)
             {
                 var data = Model1.NguoiDungs.Where(s => s.SDT.Equals(sdt) && s.Password == password).ToList();
@@ -56,8 +57,8 @@ namespace coffeeMVV04.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "Đăng nhập thất bại";
-                    return RedirectToAction("Login");
+                    ViewBag.error = "Sai số điện thoại hoặc mật khẩu!";
+                    return View();
                 }
             }
             return View();

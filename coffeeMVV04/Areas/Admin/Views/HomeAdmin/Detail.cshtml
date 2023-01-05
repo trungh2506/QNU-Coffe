@@ -51,7 +51,6 @@
                     <td>ID Hóa đơn</td>
                     <td>ID Sản phẩm</td>
                     <td>Số lượng</td>
-                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -65,13 +64,10 @@
                             @Html.DisplayFor(modelItem => item.IDHoaDon)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IDSanPham)
+                            @Html.DisplayFor(modelItem => item.SanPham.TenSP)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.SoLuong)
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Delete","Product",new {id=item.ID })"><i class="fa-solid fa-trash"></i><span>Xóa</span></a>
                         </td>
                     </tr>
                 }

@@ -19,6 +19,7 @@ namespace coffeeMVV04.Model.EF
 
         public int? IDUser { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime? Date { get; set; }
 
         public bool? TrangThai { get; set; }

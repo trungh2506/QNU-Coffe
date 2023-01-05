@@ -21,6 +21,10 @@
                     <label for="">Password</label>
                 </div>
                 <div class="pass">Quên mật khẩu?</div>
+                if(ViewBag.error != null)
+                {
+                    <div style="color:red; text-align:center; padding: 5px">@ViewBag.error</div>
+                }
                 <input type="submit" value="Đăng nhập" />
                 <div class="register-link">
                     Liên hệ quản lý để có tài khoản
