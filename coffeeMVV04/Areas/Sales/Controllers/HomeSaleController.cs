@@ -46,10 +46,10 @@ namespace coffeeMVV04.Areas.Sales.Controllers
             //lấy sản phẩm từ session vào cart
             Carts carts = (Carts)Session[strTb];
             SanPham sanpham = new SanPham();
-
+            
             //tìm sản phẩm cần giảm
             sanpham = laySanpham(id);
-
+            
             int tmp = 0;
             for (int i = 0; i < carts.product.Count; i++)
             {

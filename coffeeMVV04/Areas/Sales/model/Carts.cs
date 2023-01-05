@@ -12,7 +12,7 @@ namespace coffeeMVV04.Areas.Sales.model
         private List<SanPham> Product = new List<SanPham>();
         public Carts()
         {
-
+            
 
         }
         public void addNewCart(int ntb,SanPham pd)

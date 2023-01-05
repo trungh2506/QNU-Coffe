@@ -92,6 +92,7 @@ namespace coffeeMVV04.Areas.Sales.Controllers
         //Thống kê số tiền tất cả
         public void CountTotalMoneyAllDay()
         {
+            var today = Int32.Parse(DateTime.Now.ToString("MM"));
             if (ModelState.IsValid)
             {
                 var TotalMoney = db.HoaDons.Sum(d => d.TongCong);
